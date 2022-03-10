@@ -13,24 +13,25 @@ const app = express();
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
-app.use(routes);
 
 if (!isProduction) {
     app.use(cors());
-  }
-  app.use(helmet({
+}
+app.use(helmet({
     contentSecurityPolicy: false
-  }));
+}));
 
-  app.use(
+app.use(
     csurf({
-      cookie: {
-        secure: isProduction,
-        sameSite: isProduction && "Lax",
-        httpOnly: true,
-      },
+        cookie: {
+            secure: isProduction,
+            sameSite: isProduction && "Lax",
+            httpOnly: true,
+        },
     })
-  );
+    );
+
+app.use(routes);
 
 
-  module.exports = app;
+module.exports = app;
