@@ -18,7 +18,6 @@ router.use('/images', imageRouter);
 router.use('/fundings', fundingRouter);
 
 
-
 //---------------------------test routes ---------------------------
 // router.post('/test', function(req, res) {
 //     res.json({ requestBody: req.body });

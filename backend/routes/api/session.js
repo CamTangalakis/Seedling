@@ -51,6 +51,7 @@ router.delete('/logout', (_req, res) => {
 //get current user
 router.get('/', restoreUser, (req, res) => {
       const { user } = req;
+      console.log(user, '<<--')
       if (user) {
         return res.json({
           user: user.toSafeObject()

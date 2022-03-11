@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import AllProjects from "./components/AllProjects/allProjects";
 import NavBar from "./components/NavBar";
+import SplashPage from "./components/Splash/splash.js";
 import * as sessionActions from './store/session'
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
     <div>
       <NavBar />
       <Routes>
-        <Route path='/' exact={true} element={<AllProjects />} />
+        <Route path='/' exact={true}  element={<SplashPage />}/>
+        <Route path='/projects' exact={true} element={<AllProjects />} />
       </Routes>
     </div>
   );
