@@ -60,30 +60,3 @@ router.get('/', restoreUser, (req, res) => {
   );
 
 module.exports = router;
-
-//     JpOccZVL-aEgyllFlhJxYvZnmXWesobFkhRE
-
-// fetch('/api/session', {
-//     method: 'POST',
-//     headers: {
-//       "Content-Type": "application/json",
-//       "XSRF-TOKEN": `9w83mS4J-Ve7bGFMsIxAIHNumEWZQVSwzTRY`
-//     },
-//     body: JSON.stringify({ credential: 'Demo-lition', password: 'password' })
-//   }).then(res => res.json()).then(data => console.log(data));
-
-// fetch('/api/session', {
-//     method: 'DELETE',
-//     headers: {
-//       "Content-Type": "application/json",
-//       "XSRF-TOKEN": `9w83mS4J-Ve7bGFMsIxAIHNumEWZQVSwzTRY`
-//     }
-//   }).then(res => res.json()).then(data => console.log(data));
-//   fetch('/api/session', {
-//     method: 'POST',
-//     headers: {
-//       "Content-Type": "application/json",
-//       "XSRF-TOKEN": `9w83mS4J-Ve7bGFMsIxAIHNumEWZQVSwzTRY`
-//     },
-//     body: JSON.stringify({ credential: 'demo@user.io', password: 'whatejbesf' })
-//   }).then(res => res.json()).then(data => console.log(data));

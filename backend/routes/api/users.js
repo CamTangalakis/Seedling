@@ -51,19 +51,3 @@ router.post('/', validateSignup, asyncHandler(async (req, res) => {
   );
 
 module.exports = router;
-
-
-// fetch('/api/users', {
-//     method: 'POST',
-//     headers: {
-//       "Content-Type": "application/json",
-//       "XSRF-TOKEN": `9w83mS4J-Ve7bGFMsIxAIHNumEWZQVSwzTRY`
-//     },
-//     body: JSON.stringify({
-//       email: 'spidey@spider.man',
-//       username: 'Spidey',
-//       password: 'password',
-//       firstName: 'first',
-//       lastName: 'last'
-//     })
-//   }).then(res => res.json()).then(data => console.log(data));
