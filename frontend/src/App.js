@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AllProjects from "./components/AllProjects/allProjects";
+import NavBar from "./components/NavBar";
 import * as sessionActions from './store/session'
 
 function App() {
@@ -12,10 +13,13 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true))
   })
 
-  return (
-    <Routes>
-      <Route path='/' exact={true} element={<AllProjects />} />
-    </Routes>
+  return isLoaded && (
+    <div>
+      <NavBar />
+      <Routes>
+        <Route path='/' exact={true} element={<AllProjects />} />
+      </Routes>
+    </div>
   );
 }
 

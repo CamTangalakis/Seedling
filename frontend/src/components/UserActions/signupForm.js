@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { signup } from '../../store/session';
+import { signup } from '../../store/session';
 import './signupForm.css'
 
 const SignupForm = () => {
@@ -18,10 +18,10 @@ const SignupForm = () => {
     const onSignUp = async(e) => {
         e.preventDefault()
 
-        // const data = await dispatch(signup(username, firstName, lastName, email, password))
-        // if(data) {
-        //      setErrors(data)
-        // }
+        const data = await dispatch(signup(username, firstName, lastName, email, password))
+        if(data) {
+             setErrors(data)
+        }
     }
 
     const updateUsername = (e) => {

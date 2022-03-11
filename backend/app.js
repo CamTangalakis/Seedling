@@ -32,6 +32,12 @@ app.use(
     })
     );
 
+// app.use((req, res, next) => {
+//   let token = req.csrfToken()
+//   res.cookie('XSRF-TOKEN', token)
+//   res.locals.csrfToken = token
+// })
+
 app.use(routes);
 
 app.use((_req, _res, next) => {
@@ -53,7 +59,7 @@ app.use((err, _req, _res, next) => {
 
 app.use((err, _req, res, _next) => {
     res.status(err.status || 500);
-    console.error(err);
+    // console.error(err);
     res.json({
       title: err.title || 'Server Error',
       message: err.message,
@@ -61,6 +67,10 @@ app.use((err, _req, res, _next) => {
       stack: isProduction ? null : err.stack,
     });
   });
+
+// app.get('/csrf', (req, res, next) => {
+//   return res.json({_csrf: req.csrfToken()})
+// })
 
 
 module.exports = app;

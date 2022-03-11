@@ -14,12 +14,22 @@ const LoginForm = ({setShowModal}) => {
     const onLogin = async(e) => {
         e.preventDefault()
 
-        const data = await dispatch(login(credential, password))
-        if(data) {
-             setErrors(data)
-        }
-        navigate('/')
-        setShowModal(false)
+        // const data = await dispatch(login(credential, password))
+        // console.log(data, '<<<----')
+        // if(data) {
+        //      setErrors(data)
+        // }
+
+        return dispatch(login(credential, password))
+            .catch(async (res) => {
+                const data = await res.json()
+                if (data.errors) setErrors(data.errors)
+                console.log(errors, '<<--')
+            })
+            .then(()=> {
+                navigate('/')
+                setShowModal(false)
+            })
     }
 
     const updateCredential = (e) => {
@@ -36,7 +46,7 @@ const LoginForm = ({setShowModal}) => {
         <div className='loginContainer'>
             <form onSubmit={onLogin} className='loginForm'>
                 <div className='errors'>
-                    {errors.length && errors.map((error, i) => (
+                    {errors.map((error, i) => (
                         <div key={i}>{error.split(':')[1]}</div>
                     ))}
                 </div>

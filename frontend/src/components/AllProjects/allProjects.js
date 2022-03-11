@@ -4,8 +4,8 @@ import SignupModal from "../UserActions/signupModal";
 const AllProjects = () => {
     return (
         <div>
-            <LoginModal />
-            <SignupModal />
+            {/* <LoginModal />
+            <SignupModal /> */}
         </div>
     )
 }
