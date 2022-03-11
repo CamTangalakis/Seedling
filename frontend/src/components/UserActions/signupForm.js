@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { signup } from '../../store/session';
+// import { signup } from '../../store/session';
+import './signupForm.css'
 
 const SignupForm = () => {
     const [errors, setErrors] = useState([])
@@ -17,10 +18,10 @@ const SignupForm = () => {
     const onSignUp = async(e) => {
         e.preventDefault()
 
-        const data = await dispatch(signup(username, firstName, lastName, email, password))
-        if(data) {
-             setErrors(data)
-        }
+        // const data = await dispatch(signup(username, firstName, lastName, email, password))
+        // if(data) {
+        //      setErrors(data)
+        // }
     }
 
     const updateUsername = (e) => {
@@ -48,13 +49,15 @@ const SignupForm = () => {
     }
 
     return (
-        <div>
-            <form onSubmit={onSignUp}>
+        <div className='signupContainer'>
+            <form onSubmit={onSignUp} className='signupForm'>
                 <div className='errors'>
                     {errors.map((error, i) => (
                         <div key={i}>{error.split(':')[1]}</div>
                     ))}
                 </div>
+
+                <h2 className='signupHeader'>Sign Up</h2>
 
                 <input
                     className='signupInput'
@@ -110,7 +113,7 @@ const SignupForm = () => {
                     required
                     onChange={updateConfirmPass} />
 
-                <button type='submit' className='loginButton'>Login</button>
+                <button type='submit' className='signupButton'>Let's Go!</button>
             </form>
         </div>
     )
