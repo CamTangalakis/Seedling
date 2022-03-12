@@ -1,0 +1,119 @@
+.splashPartOne {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 2vw;
+}
+
+.splashOneLeft {
+    width: 30vw;
+    text-align: center;
+    background-color: rgb(87, 128, 17);
+    color: beige;
+    padding: 10vw 10vw 25vw 10vw;
+}
+
+.splashOneRight {
+    width: 30vw;
+    text-align: center;
+    background-color: beige;
+    color: rgb(87, 128, 17);
+    padding: 10vw 10vw 25vw 10vw;
+}
+
+.splashPartTwo {
+    display: flex;
+    position: absolute;
+    width: 50vw;
+    height: 50vw;
+    top: 35vh;
+    left: 25vw;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.25);
+}
+
+.splashPartThree {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 80%;
+    background-color: rgb(67, 102, 6);
+    padding: 25vw 10vw 10vw 10vw;
+}
+
+.infoBit {
+    width: 25%;
+    background-color: beige;
+    text-align: center;
+    padding: 2vw;
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.25), -1px -1px 1px 1px rgba(255, 255, 255, 0.25);
+    color: rgb(90, 36, 92);
+    font-weight: 600;
+}
+
+
+.splashPartFour {
+    background-color: rgb(90, 36, 92);
+    padding: 20vw;
+}
+
+.splashPartFive {
+    display: flex;
+    flex-direction: row;
+    font-size: 3vw;
+}
+
+.splashFiveLeft {
+    background-color: rgb(67, 102, 6);
+    color: beige;
+    width: 70%;
+    padding: 5vw;
+}
+
+.splashFiveRight {
+    background-color: rgb(87, 128, 17);
+    color: beige;
+    width: 30%;
+    padding: 5vw;
+}
+
+.splashPartSix {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 5vw 0vw;
+    background-color: beige;
+}
+
+.splashSixCategories {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.splashCategoriesHeader {
+    font-size: 5vw;
+    padding: 5vw 21vw;
+}
+
+.categoryBit {
+    width: 8vw;
+    height: 8vw;
+    padding: 1vw;
+    margin: 1vw;
+    background-color: rgb(233, 233, 208);
+    border-radius: 50%;
+    font-weight: 600;
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.25), -1px -1px 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+.categoryBit:hover {
+    background-color: beige;
+    box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.25), -1px -1px 2px 2px rgba(255, 255, 255, 0.5);
+
+}
+
+.categoryImg {
+    width: 8vw;
+    height: 8vw;
+}
