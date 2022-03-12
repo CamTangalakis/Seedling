@@ -3,13 +3,13 @@ const db = require('../../db/models')
 const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-const { Project } = require('../../db/models');
+const { Project, Image } = require('../../db/models');
 const router = express.Router();
 
 
 router.get('/', asyncHandler(async(req, res) => {
     let projects = await Project.findAll({
-        include: db.Image
+        include: Image
     })
     res.json(projects)
 }))

@@ -3,6 +3,8 @@ import LoginModal from './UserActions/loginModal'
 import SignupModal from './UserActions/signupModal'
 import { logout } from '../store/session'
 import { NavLink } from 'react-router-dom'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
 
 const NavBar = () => {
     const user = useSelector(state => state.session.user)
@@ -16,7 +18,7 @@ const NavBar = () => {
     let navButtons
     let projectButton
 
-    if(user.length) {
+    if(user?.length) {
         projectButton = <NavLink to='/projects/new' exact={true}>
             Start a Project
         </NavLink>

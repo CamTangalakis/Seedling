@@ -34,4 +34,5 @@
     "sequelize": "^5.22.5",
     "sequelize-cli": "^5.5.1"
   }
+  
 }
