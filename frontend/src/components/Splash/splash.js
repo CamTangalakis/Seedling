@@ -36,7 +36,7 @@ const SplashPage = () => {
 
             <div className='splashPartFive'>
                 <div className="splashFiveLeft">
-                    Seedling is dedicated to funding the future.
+                    Seedling is dedicated to funding the future. Support budding businesses and watch the future bloom!
                 </div>
                 <div className="splashFiveRight">
                     <LoginModal />

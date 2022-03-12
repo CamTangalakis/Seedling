@@ -5,6 +5,7 @@ import { logout } from '../store/session'
 import { NavLink } from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
+import './NavBar.css'
 
 const NavBar = () => {
     const user = useSelector(state => state.session.user)
@@ -29,14 +30,14 @@ const NavBar = () => {
     }
     else {
         projectButton = null
-        navButtons = <div>
+        navButtons = <div className='NavComponent'>
             <LoginModal />
             <SignupModal />
         </div>
     }
 
     return (
-        <div>
+        <div className='NavBarContainer'>
             <NavLink to='/' exact ={true}>
                 Home
             </NavLink>

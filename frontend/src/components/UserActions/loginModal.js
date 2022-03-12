@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Modal } from '../context/Modal'
 import {login} from '../../store/session';
 import LoginForm from './loginForm'
+import './loginForm.css'
 
 function LoginModal() {
     const dispatch = useDispatch()
@@ -14,14 +15,14 @@ function LoginModal() {
 
     return (
         <div className=''>
-            <div onClick={()=> setShowModal(true)}> Login </div>
+            <div className='userButton' onClick={()=> setShowModal(true)}> Login </div>
             {showModal && (
                 <Modal onClose={()=> setShowModal(false)}>
                     <LoginForm setShowModal={setShowModal}/>
                 </Modal>
             )}
 
-            <div onClick={demoLogin}>Login as Demo</div>
+            <div className='userButton' onClick={demoLogin}>Login as Demo</div>
         </div>
     )
 }
