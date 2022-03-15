@@ -1,12 +1,14 @@
-import React, {useState} from 'react';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 
 function App() {
-  const [number, setNumber] = useState(5)
 
   return (
     <div className="App">
-      <h1>Hello world</h1>
+      <Routes>
+        <Route path='/' element={} />
+      </Routes>
     </div>
   );
 }
