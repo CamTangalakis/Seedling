@@ -41,19 +41,14 @@ router.post('/', validateLogin, asyncHandler(async (req, res, next) => {
   );
 
   //log out
-  router.delete(
-    '/',
-    (_req, res) => {
+  router.delete('/', (_req, res) => {
       res.clearCookie('token');
       return res.json({ message: 'success' });
     }
   );
 
   //restore user
-  router.get(
-    '/',
-    restoreUser,
-    (req, res) => {
+  router.get('/', restoreUser, (req, res) => {
       const { user } = req;
       if (user) {
         return res.json({
