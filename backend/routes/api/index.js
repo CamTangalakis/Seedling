@@ -18,7 +18,7 @@ router.use('/fundings', fundingRouter);
 
 router.post('/test', function(req, res) {
     res.json({ requestBody: req.body });
-  });
+});
 
 router.get('/set-token-cookie', asyncHandler(async (req, res) => {
   const user = await User.findOne({

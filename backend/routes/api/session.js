@@ -60,36 +60,3 @@ router.post('/', validateLogin, asyncHandler(async (req, res, next) => {
 
 
 module.exports = router;
-
-// fetch('/api/session', {
-//     method: 'POST',
-//     headers: {
-//       "Content-Type": "application/json",
-//       "XSRF-TOKEN": `NNLiQI6o-LqvLtgziU3BU08IU2j_fkwCVtnY`
-//     },
-//     body: JSON.stringify({ credential: 'demo@user.io', password: 'password' })
-//   }).then(res => res.json()).then(data => console.log(data));
-
-// fetch('/api/session', {
-//     method: 'DELETE',
-//     headers: {
-//       "Content-Type": "application/json",
-//       "XSRF-TOKEN": `NNLiQI6o-LqvLtgziU3BU08IU2j_fkwCVtnY`
-//     }
-//   }).then(res => res.json()).then(data => console.log(data));
-
-// fetch('/api/users', {
-//     method: 'POST',
-//     headers: {
-//       "Content-Type": "application/json",
-//       "XSRF-TOKEN": `NNLiQI6o-LqvLtgziU3BU08IU2j_fkwCVtnY`
-// },
-//     body: JSON.stringify({
-//       email: 'spidey@spider.man',
-//       username: 'Spidey',
-//       password: 'password',
-//       profilePic: 'string'
-//     })
-//   }).then(res => res.json()).then(data => console.log(data));
-
-// bUaEgd7O-6s7OIUIVZa0Z5d_XyLMYgTh2FG8
