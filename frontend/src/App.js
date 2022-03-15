@@ -1,6 +1,13 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import SplashPage from "./components/Splash/splash";
+
 function App() {
   return (
-    <h1>Hello from App</h1>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/'  exact={true} element={<SplashPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
