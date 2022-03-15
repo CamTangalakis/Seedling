@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { signup } from '../../store/session';
+import { signup } from '../../store/session';
 import './signup.css'
+import {TextField} from '@material-ui/core'
 
 const SignupForm = () => {
     const [errors, setErrors] = useState([])
@@ -9,8 +10,7 @@ const SignupForm = () => {
     const [password, setPassword] = useState('')
     const [confirmPass, setConfirmPass] = useState('')
     const [email, setEmail] = useState('')
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
+    const [profilePic, setProfilePic] = useState('')
 
     const user = useSelector(state => state.session.user)
     const dispatch = useDispatch()
@@ -18,10 +18,10 @@ const SignupForm = () => {
     const onSignUp = async(e) => {
         e.preventDefault()
 
-        // const data = await dispatch(signup(username, firstName, lastName, email, password))
-        // if(data) {
-        //      setErrors(data)
-        // }
+        const data = await dispatch(signup(username, profilePic, email, password))
+        if(data) {
+             setErrors(data)
+        }
     }
 
     const updateUsername = (e) => {
@@ -32,12 +32,8 @@ const SignupForm = () => {
         setEmail(e.target.value)
     }
 
-    const updateFirstName = (e) => {
-        setFirstName(e.target.value)
-    }
-
-    const updateLastName = (e) => {
-        setLastName(e.target.value)
+    const updateProfilePic = (e) => {
+        setProfilePic(e.target.value)
     }
 
     const updatePassword = (e) => {
@@ -53,13 +49,13 @@ const SignupForm = () => {
             <form onSubmit={onSignUp} className='signupForm'>
                 <div className='errors'>
                     {errors.map((error, i) => (
-                        <div key={i}>{error.split(':')[1]}</div>
+                        <div key={i}>{error}</div>
                     ))}
                 </div>
 
                 <h2 className='signupHeader'>Sign Up</h2>
 
-                <input
+                <TextField
                     className='signupInput'
                     name='username'
                     type='text'
@@ -68,25 +64,16 @@ const SignupForm = () => {
                     required
                     onChange={updateUsername} />
 
-                <input
+                <TextField
                     className='signupInput'
-                    name='firstName'
+                    name='profilePic'
                     type='text'
-                    placeholder='Enter first name'
-                    value={firstName}
+                    placeholder='Enter profile picture url'
+                    value={profilePic}
                     required
-                    onChange={updateFirstName} />
+                    onChange={updateProfilePic} />
 
-                <input
-                    className='signupInput'
-                    name='lastName'
-                    type='text'
-                    placeholder='Enter last name'
-                    value={lastName}
-                    required
-                    onChange={updateLastName} />
-
-                <input
+                <TextField
                     className='signupInput'
                     name='email'
                     type='text'
@@ -95,19 +82,19 @@ const SignupForm = () => {
                     required
                     onChange={updateEmail} />
 
-                <input
+                <TextField
                     className='signupInput'
                     name='password'
-                    type='text'
+                    type='password'
                     placeholder='Enter password'
                     value={password}
                     required
                     onChange={updatePassword} />
 
-                <input
+                <TextField
                     className='signupInput'
                     name='confirmPass'
-                    type='text'
+                    type='password'
                     placeholder='Confirm password'
                     value={confirmPass}
                     required

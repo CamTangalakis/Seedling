@@ -21,6 +21,7 @@ const validateLogin = [
 //login
 router.post('/', validateLogin, asyncHandler(async (req, res, next) => {
       const { credential, password } = req.body;
+      console.log("in the backend")
 
       const user = await User.login({ credential, password });
 
@@ -35,7 +36,7 @@ router.post('/', validateLogin, asyncHandler(async (req, res, next) => {
       await setTokenCookie(res, user);
 
       return res.json({
-        user,
+        user
       });
     }),
   );

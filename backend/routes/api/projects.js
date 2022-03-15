@@ -20,8 +20,6 @@ router.get('/:id/', asyncHandler(async (req, res) => {
 }))
 
 router.post('/', asyncHandler(async (req, res) => {
-    // const token = req.csrfToken()
-    // res.cookie('csrf-token', token)
     const {userId, categoryId, title, description, goalAmount} = req.body
     const project = await Project.create({userId, categoryId, title, description, goalAmount})
     return res.json({project})

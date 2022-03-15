@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import LoginModal from "../Login/LoginModal"
-import SignupModal from "../Signup/SignupModal"
+import SignUpModal from "../Signup/SignupModal"
 import './splash.css'
 
 const SplashPage = () => {
@@ -40,7 +40,7 @@ const SplashPage = () => {
                 </div>
                 <div className="splashFiveRight">
                     <LoginModal />
-                    <SignupModal />
+                    <SignUpModal />
                 </div>
             </div>
             {/* ['Tech and Gadgets', 'Food', 'Community', 'Environment and Nature',
