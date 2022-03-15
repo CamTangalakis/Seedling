@@ -5,6 +5,7 @@ const { setTokenCookie, restoreUser } = require('../../utils/auth');
 const { User } = require('../../db/models');
 const router = express.Router();
 
+//login
 router.post(
     '/',
     asyncHandler(async (req, res, next) => {
@@ -28,6 +29,7 @@ router.post(
     }),
   );
 
+  //log out
   router.delete(
     '/',
     (_req, res) => {
@@ -35,6 +37,7 @@ router.post(
       return res.json({ message: 'success' });
     }
   );
+
 
 module.exports = router;
 
@@ -53,6 +56,20 @@ module.exports = router;
 //       "Content-Type": "application/json",
 //       "XSRF-TOKEN": `NNLiQI6o-LqvLtgziU3BU08IU2j_fkwCVtnY`
 //     }
+//   }).then(res => res.json()).then(data => console.log(data));
+
+// fetch('/api/users', {
+//     method: 'POST',
+//     headers: {
+//       "Content-Type": "application/json",
+//       "XSRF-TOKEN": `NNLiQI6o-LqvLtgziU3BU08IU2j_fkwCVtnY`
+// },
+//     body: JSON.stringify({
+//       email: 'spidey@spider.man',
+//       username: 'Spidey',
+//       password: 'password',
+//       profilePic: 'string'
+//     })
 //   }).then(res => res.json()).then(data => console.log(data));
 
 // bUaEgd7O-6s7OIUIVZa0Z5d_XyLMYgTh2FG8
