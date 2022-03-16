@@ -6,6 +6,9 @@ import {Button, ThemeProvider} from '@material-ui/core'
 import {createTheme} from '@material-ui/core/styles'
 import {green} from '@material-ui/core/colors'
 import LoginModal from "./components/Login/LoginModal";
+import AllProjects from "./components/Projects/AllProjects";
+import { useEffect } from "react";
+import { createProject, delProject, editProject, getProjects } from "./store/project";
 
 const theme = createTheme ({
   palette: {
@@ -19,7 +22,11 @@ const theme = createTheme ({
 })
 
 function App() {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getProjects())
+  }, [])
 
   return (
     <div>
@@ -28,6 +35,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path='/'  exact={true} element={<SplashPage />} />
+            <Route path='/home' exact={true} element={<AllProjects />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

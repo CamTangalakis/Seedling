@@ -42,9 +42,9 @@ const NavBar = () => {
             <AppBar color='secondary' >
                 <Toolbar className='NavContainer' >
                     <div className='NavName'>
-                        <Typography variant='h6'>
+                        <Button href='/home' variant='h6'>
                             Seedling
-                        </Typography>
+                        </Button>
                     </div>
                     <div className='NavButtons'>
                         <Button>
