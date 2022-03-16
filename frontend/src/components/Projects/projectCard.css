@@ -1,0 +1,15 @@
+.cardContainer {
+    width: 25%;
+    max-width: 250px;
+    /* height: 25vw; */
+    margin: 2vw;
+    padding: 1vw;
+}
+
+.projectDesc {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    height: 14vh;
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+}

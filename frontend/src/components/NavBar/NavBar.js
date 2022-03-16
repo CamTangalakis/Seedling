@@ -39,10 +39,10 @@ const NavBar = () => {
 
     return (
         <div>
-            <AppBar color='secondary' >
+            <AppBar style={{'backgroundColor': 'rgb(67, 102, 6)'}} >
                 <Toolbar className='NavContainer' >
                     <div className='NavName'>
-                        <Button href='/home' variant='h6'>
+                        <Button href='/home'>
                             Seedling
                         </Button>
                     </div>
