@@ -1,0 +1,7 @@
+.NavContainer {
+    justify-content: space-between;
+}
+
+.NavButtons {
+    display: flex;
+}

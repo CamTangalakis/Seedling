@@ -60,6 +60,7 @@ const SignupForm = () => {
                     name='username'
                     type='text'
                     placeholder='Enter username'
+                    label='Username'
                     value={username}
                     required
                     onChange={updateUsername} />
@@ -68,7 +69,8 @@ const SignupForm = () => {
                     className='signupInput'
                     name='profilePic'
                     type='text'
-                    placeholder='Enter profile picture url'
+                    placeholder='Enter image url'
+                    label='Profile Picture'
                     value={profilePic}
                     required
                     onChange={updateProfilePic} />
@@ -77,7 +79,8 @@ const SignupForm = () => {
                     className='signupInput'
                     name='email'
                     type='text'
-                    placeholder='Enter email'
+                    placeholder='user@mail.com'
+                    label='Email'
                     value={email}
                     required
                     onChange={updateEmail} />
@@ -87,6 +90,7 @@ const SignupForm = () => {
                     name='password'
                     type='password'
                     placeholder='Enter password'
+                    label="Password"
                     value={password}
                     required
                     onChange={updatePassword} />
@@ -96,6 +100,7 @@ const SignupForm = () => {
                     name='confirmPass'
                     type='password'
                     placeholder='Confirm password'
+                    label="Confirm Password"
                     value={confirmPass}
                     required
                     onChange={updateConfirmPass} />

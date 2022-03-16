@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { login } from '../../store/session';
+import {TextField} from '@material-ui/core'
 import './login.css'
 
 const LoginForm = () => {
@@ -30,20 +31,22 @@ const LoginForm = () => {
 
                 <h2 className='loginHeader'>Login</h2>
 
-                <input
+                <TextField
                     className='credentialInput'
                     name='credential'
                     type='text'
-                    placeholder='Enter credentials'
+                    placeholder='Enter email or username'
+                    label="Credentials"
                     value={credential}
                     required
                     onChange={(e) => setCredential(e.target.value)} />
 
-                <input
+                <TextField
                     className='credentialInput'
                     name='password'
                     type='password'
                     placeholder='Enter password'
+                    label='Password'
                     value={password}
                     required
                     onChange={(e) => setPassword(e.target.value)} />
