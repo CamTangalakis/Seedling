@@ -75,7 +75,7 @@ const getSearch = (search) => {
 }
 
 export const getProjects = () => async (dispatch) => {
-    const response = await fetch('/api/projects/')
+    const response = await csrfFetch('/api/projects/')
     if(response.ok) {
         const data = await response.json()
         dispatch(getAllProjects(data))
@@ -89,7 +89,7 @@ export const getProjects = () => async (dispatch) => {
 }
 
 export const getProject = (id) => async (dispatch) => {
-    const response = await fetch(`/api/projects/${id}/`)
+    const response = await csrfFetch(`/api/projects/${id}/`)
     if(response.ok) {
         const data = await response.json()
         dispatch(getOneProject(data))
@@ -109,7 +109,6 @@ export const createProject = (project) => async (dispatch) => {
     })
     if(response.ok) {
         const data = await response.json()
-        console.log(data, '<< in the thunk')
         dispatch(postProject(data))
         return null
     } else if (response.status < 500) {
@@ -141,13 +140,11 @@ export const editProject = (project) => async (dispatch) => {
 }
 
 export const delProject = (id) => async (dispatch) => {
-    console.log(id, '<<<<<<sldkjnsdfjog')
     const response = await csrfFetch(`/api/projects/${id}/`, {
         method: 'DELETE'
     })
     if(response.ok) {
         const data = await response.json()
-        console.log(data, '<<<thunk')
         dispatch(deleteProject(data))
         return data
     } else if (response.status < 500) {
