@@ -43,7 +43,7 @@ const NavBar = () => {
                 <Toolbar className='NavContainer' >
                     <div className='NavName'>
                         <Button href='/home'>
-                            Seedling
+                            <img className='seedlingImg' src='https://user-images.githubusercontent.com/85664060/158000464-23b28e38-30f5-4fb2-9fce-80650228f655.png'/>
                         </Button>
                     </div>
                     <div className='NavButtons'>

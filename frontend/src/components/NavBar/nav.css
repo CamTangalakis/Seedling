@@ -5,3 +5,8 @@
 .NavButtons {
     display: flex;
 }
+
+.seedlingImg {
+    width: 50px;
+    height: 50px;
+}
