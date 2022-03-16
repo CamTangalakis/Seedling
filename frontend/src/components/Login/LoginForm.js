@@ -13,7 +13,7 @@ const LoginForm = () => {
     const onLogin = async(e) => {
         e.preventDefault()
 
-        return dispatch(login(credential, password))
+        return dispatch(login({credential, password}))
             .catch(async (res) => {
                 const data = await res.json()
                 if (data.errors) setErrors(data.errors)

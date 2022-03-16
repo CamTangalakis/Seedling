@@ -8,6 +8,7 @@ import AllProjects from "./components/Projects/AllProjects";
 import CreateProjectPage from "./components/ProjectForms/CreateProjectPage";
 import { useEffect } from "react";
 import { getProjects } from "./store/project";
+import { restoreUser } from "./store/session";
 
 const theme = createTheme ({
   palette: {
@@ -25,6 +26,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getProjects())
+    dispatch(restoreUser())
   }, [])
 
   return (

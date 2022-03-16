@@ -20,11 +20,12 @@ const CreateProjectPage = () => {
 
     const createNewProject = () => {
         dispatch(createProject({userId, categoryId, title, description, goalAmount}))
+        navigate('/home')
     }
 
     return (
         <div>
-            <FormControl onSubmit={createNewProject}>
+            <FormControl>
                 <h2>Create a Project</h2>
                 <TextField
                     type='text'
@@ -89,7 +90,7 @@ const CreateProjectPage = () => {
                         <MenuItem value={8}>Literature and Film</MenuItem>
                 </Select>
 
-                <Button type='submit'>Get Funded!</Button>
+                <Button type='submit ' onClick={createNewProject}>Get Funded!</Button>
             </FormControl>
         </div>
     )

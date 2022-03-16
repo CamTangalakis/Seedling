@@ -8,8 +8,14 @@ const AllProjects = () => {
 
     const list = projects.map((project) => <ProjectCard project={project} />)
     return (
-        <div className="projectsContainer">
-            {list}
+        <div>
+            <div className='categoryBar'>
+
+            </div>
+
+            <div className="projectsContainer">
+                {list}
+            </div>
         </div>
     )
 }
