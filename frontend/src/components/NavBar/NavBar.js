@@ -50,6 +50,11 @@ const NavBar = () => {
                         <Button>
                             Search
                         </Button>
+
+                        {user &&
+                            <Button href='/newProject'>New Project</Button>
+                        }
+
                         <IconButton >
                             <MenuIcon aria-controls="mainMenu"
                             aria-haspopup="true"

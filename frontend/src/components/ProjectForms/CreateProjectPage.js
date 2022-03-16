@@ -2,15 +2,21 @@ import { createProject } from "../../store/project";
 import { TextField, FormControl, Select, MenuItem, InputLabel, Button } from '@material-ui/core'
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom'
 
 const CreateProjectPage = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const userId = useSelector(state => state.session.user?.id)
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [goalAmount, setGoalAmount] = useState(0)
     const [categoryId, setCategoryId] = useState(0)
     const [image, setImage] = useState('')
+
+    if(userId === undefined) {
+        navigate('/home')
+    }
 
     const createNewProject = () => {
         dispatch(createProject({userId, categoryId, title, description, goalAmount}))
