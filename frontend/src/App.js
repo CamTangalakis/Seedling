@@ -7,9 +7,10 @@ import { createTheme } from '@material-ui/core/styles'
 import AllProjects from "./components/Projects/AllProjects";
 import CreateProjectPage from "./components/ProjectForms/CreateProjectPage";
 import { useEffect } from "react";
-import { getProjects } from "./store/project";
+import { getProjects, postFunding } from "./store/project";
 import { restoreUser } from "./store/session";
 import CategoryResults from "./components/CategoryResults/CategoryResults";
+import ProjectPage from "./components/Projects/ProjectPage";
 
 const theme = createTheme ({
   palette: {
@@ -28,6 +29,7 @@ function App() {
   useEffect(() => {
     dispatch(getProjects())
     dispatch(restoreUser())
+    // dispatch(postFunding({projectId: 1, userId: 1, funded: 500}))
   }, [])
 
   return (
@@ -40,6 +42,7 @@ function App() {
             <Route path='/home' exact={true} element={<AllProjects />} />
             <Route path='/newProject' exact={true} element={<CreateProjectPage />} />
             <Route path='/category/:id' exact={true} element={<CategoryResults />} />
+            <Route path='/project/:id' exact={true} element={<ProjectPage />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

@@ -120,7 +120,8 @@ export const createProject = (project) => async (dispatch) => {
 
 
 export const editProject = (project) => async (dispatch) => {
-    const projectId = project.id
+    const projectId = project.projectId
+    console.log(project, '<<<--- thunkthunk')
     const response = await csrfFetch(`/api/projects/${projectId}/`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
@@ -157,6 +158,7 @@ export const delProject = (id) => async (dispatch) => {
 
 
 export const postFunding = (fund) => async (dispatch) => {
+    console.log(fund, '<<<<thunk')
     const response = await csrfFetch('/api/fundings/', {
         method: 'POST',
         headers: {'Content-Type': 'Application/json'},
@@ -245,20 +247,20 @@ const reducer = (state = initialState, action) => {
             return newState
         case EDIT_PROJECT:
             newState = {...state}
-            const projectI = newState.projects.findIndex(project => project.id === action.payload.id)
-            newState.projects[projectI] = action.payload.project
-            newState.currentProject = action.payload.project
+            console.log(newState, action.payload, '<<<---- reducer')
+            const projectI = newState.projects.findIndex(project => project.projectId === action.payload.id)
+            newState.projects[projectI] = action.payload
+            newState.currentProject = action.payload
             return newState
         case DELETE_PROJECT:
             newState = {...state}
-            console.log(action.payload, '<<<---- delete-project')
             const projectInd = newState.projects.findIndex(project => project.id === action.payload.id)
             newState.projects.splice(projectInd, 1)
             return newState
         case POST_FUND:
             newState = {...state}
-            newState.currentProject.funding.push([action.payload.funded, action.payload.userId, action.payload.id])
-            newState.currentProject.funding = newState.currentProject.funding.slice()
+            newState.currentProject.Fundings.push([action.payload.funded, action.payload.userId, action.payload.id])
+            newState.currentProject.Fundings = newState.currentProject.Fundings.slice()
             return newState
         case EDIT_FUND:
             newState = {...state}

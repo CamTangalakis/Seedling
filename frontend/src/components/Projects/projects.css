@@ -3,3 +3,39 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+
+
+/* ---------------- project page ----------------- */
+
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+    width: 100%;
+}
+
+.pageInfo {
+    display: flex;
+}
+
+.pageInfoStuff {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+}
+
+.pageDescription {
+    border: solid 1px rgb(67, 102, 6);
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    margin: 3vw 2vw;
+}
+
+.pageImage {
+    width: 60%;
+    margin: 2vw;
+}

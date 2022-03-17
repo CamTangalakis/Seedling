@@ -8,14 +8,25 @@ const ProjectCard = ({project}) => {
 
 
     return (
-        <Card className='cardContainer'>
-            <CardContent>
-                <CardMedia className='projectImage' image={project?.image} style={{"height": "20vw", "width": "30vw", "margin": "-4vw 4vw 0vw -4vw"}}/>
-                <h3><a className='projectTitle' href={`/project/${project?.id}`}>{project?.title}</a></h3>
-                {/* <p className='projectDesc'>{project?.description}</p> */}
-                <p className='projectGoal'>Goal: ${project?.goalAmount}</p>
-                <p className='projectCategory'>{categories[categoryId]}</p>
-            </CardContent>
+        <Card className='cardContainer' style={{"box-shadow": "1px 1px 1px 1px rgba(0,0,0,0.25), -1px -1px 1px 1px rgba(255, 255, 255, 0.25)"}}>
+            <a className='cardContent' href={`/project/${project?.id}`}>
+                <CardContent>
+
+                    <CardMedia className='projectImage' image={project?.image} style={{"height": "20vw", "width": "30vw", "margin": "-4vw 4vw 0vw -4vw"}}/>
+
+                    <div className="progressBar">
+                        <div className="progressStatus"
+                            style={{width:`${(project?.Fundings?.reduce((acc, a)=>acc+a,0)) / (project?.goal_amount) * 100}%`}}>
+                        </div>
+                    </div>
+
+                    <div className='projectInfo'>
+                        <h3 className='projectTitle'>{project?.title}</h3>
+                        <p className='projectGoal'>Goal: <strong>${project?.goalAmount}</strong></p>
+                        <p className='projectCategory'>{categories[categoryId]}</p>
+                    </div>
+                </CardContent>
+            </a>
         </Card>
     )
 }
