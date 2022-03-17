@@ -10,7 +10,7 @@ const ProjectCard = ({project}) => {
         <Card className='cardContainer'>
             <CardContent>
                 <CardMedia className='projectImage' image={project?.image} />
-                <h3 className='projectTitle'>{project?.title}</h3>
+                <h3><a className='projectTitle' href={`/project/${project.id}`}>{project?.title}</a></h3>
                 <p className='projectDesc'>{project?.description}</p>
                 <p className='projectGoal'>Goal: ${project?.goalAmount}</p>
                 <p className='projectCategory'>{categories[categoryId]}</p>

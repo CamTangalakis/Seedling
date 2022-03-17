@@ -13,3 +13,9 @@
     overflow: hidden;
     -webkit-line-clamp: 4;
 }
+
+
+.projectTitle {
+    text-decoration: none;
+    color: black;
+}

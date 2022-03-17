@@ -6,14 +6,14 @@ const { User } = require('../../db/models');
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const projectRouter = require('./projects.js')
-const imageRouter = require('./images.js')
+// const imageRouter = require('./images.js')
 const fundingRouter = require('./fundings.js')
 
 router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 router.use('/projects', projectRouter);
-router.use('/images', imageRouter);
+// router.use('/images', imageRouter);
 router.use('/fundings', fundingRouter);
 
 router.post('/test', function(req, res) {
