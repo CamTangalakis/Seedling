@@ -214,8 +214,14 @@ export const deleteFunding = (id) => async (dispatch) => {
 export const searchProjects = (term) => async (dispatch) => {
     const response = await csrfFetch(`/api/projects/search/${term}`)
     if (response.ok) {
-        const projects = await response.json()
-        dispatch(getSearch(projects))
+        const data = await response.json()
+        dispatch(getSearch(data))
+        return data
+    }else if (response.status < 500) {
+        const data = await response.json()
+        if(data.errors) {
+            return data.errors
+        } else return ['An error occured. Please try again']
     }
 }
 

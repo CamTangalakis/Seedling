@@ -16,7 +16,7 @@ const CategoryResults = () => {
     return (
         <div>
             <CategoryBar />
-            <h2>{categories[catId.id - 1]}</h2>
+            <h2 className='categoryTitle'>{categories[catId.id - 1]}</h2>
             <div className="projectsContainer">
                 {projects?.map(project => <ProjectCard project={project} /> )}
             </div>

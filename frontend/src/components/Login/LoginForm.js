@@ -39,7 +39,10 @@ const LoginForm = () => {
                     label="Credentials"
                     value={credential}
                     required
-                    onChange={(e) => setCredential(e.target.value)} />
+                    onChange={(e) => setCredential(e.target.value)}
+                    style={{"margin": "1vw 0vw",
+                    "border": "none"}}
+                />
 
                 <TextField
                     className='credentialInput'
@@ -49,7 +52,10 @@ const LoginForm = () => {
                     label='Password'
                     value={password}
                     required
-                    onChange={(e) => setPassword(e.target.value)} />
+                    onChange={(e) => setPassword(e.target.value)}
+                    style={{"margin": "1vw 0vw",
+                    "border": "none"}}
+                />
 
                 <button type='submit' className='loginButton'>Let's Go!</button>
             </form>

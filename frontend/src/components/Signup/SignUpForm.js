@@ -63,7 +63,10 @@ const SignupForm = () => {
                     label='Username'
                     value={username}
                     required
-                    onChange={updateUsername} />
+                    onChange={updateUsername}
+                    style={{"margin": "1vw 0vw",
+                    "border": "none"}}
+                />
 
                 <TextField
                     className='signupInput'
@@ -73,7 +76,10 @@ const SignupForm = () => {
                     label='Profile Picture'
                     value={profilePic}
                     required
-                    onChange={updateProfilePic} />
+                    onChange={updateProfilePic}
+                    style={{"margin": "1vw 0vw",
+                    "border": "none"}}
+                />
 
                 <TextField
                     className='signupInput'
@@ -83,7 +89,10 @@ const SignupForm = () => {
                     label='Email'
                     value={email}
                     required
-                    onChange={updateEmail} />
+                    onChange={updateEmail}
+                    style={{"margin": "1vw 0vw",
+                    "border": "none"}}
+                />
 
                 <TextField
                     className='signupInput'
@@ -93,7 +102,10 @@ const SignupForm = () => {
                     label="Password"
                     value={password}
                     required
-                    onChange={updatePassword} />
+                    onChange={updatePassword}
+                    style={{"margin": "1vw 0vw",
+                    "border": "none"}}
+                />
 
                 <TextField
                     className='signupInput'
@@ -103,7 +115,10 @@ const SignupForm = () => {
                     label="Confirm Password"
                     value={confirmPass}
                     required
-                    onChange={updateConfirmPass} />
+                    onChange={updateConfirmPass}
+                    style={{"margin": "1vw 0vw",
+                    "border": "none"}}
+                />
 
                 <button type='submit' className='signupButton'>Let's Go!</button>
             </form>
