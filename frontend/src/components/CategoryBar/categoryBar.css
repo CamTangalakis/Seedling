@@ -13,12 +13,18 @@
 }
 
 .categoryBit {
-    width: 8vw;
+    width: 5vw;
+    height: 5vw;
     margin: 2vw;
     margin-bottom: 0vw;
 }
 
+.categoryImg {
+    width: 5vw;
+    height: 5vw;
+}
+
 .iconLabel {
-    width: 8vw;
+    width: 5vw;
     margin: 2vw;
 }

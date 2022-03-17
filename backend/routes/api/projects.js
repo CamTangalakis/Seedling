@@ -1,19 +1,20 @@
 const express = require('express')
 const db = require('../../db/models')
 const asyncHandler = require('express-async-handler');
-const { Project } = require('../../db/models');
+const { Project, Funding } = require('../../db/models');
 const router = express.Router();
 
 
 router.get('/', asyncHandler(async(req, res) => {
-    let projects = await Project.findAll()
+    let projects = await Project.findAll({include: Funding})
     res.json(projects)
 }))
 
 router.get('/:id/', asyncHandler(async (req, res) => {
     const {id} = req.params
     let project = await Project.findOne({
-        where: {id: id}
+        where: {id: id},
+        include: Funding,
     })
     res.json(project)
 }))
@@ -34,7 +35,6 @@ router.put('/:id/', asyncHandler(async(req, res) => {
 
 router.delete('/:id/', asyncHandler(async(req, res) => {
     const {id} = req.params
-    console.log(id, '<<<<SDfsdg')
     const project = await Project.findByPk(id)
     await project.destroy()
     res.send('Project deleted successfully!')

@@ -19,7 +19,7 @@ const CreateProjectPage = () => {
     }
 
     const createNewProject = () => {
-        dispatch(createProject({userId, categoryId, title, description, goalAmount}))
+        dispatch(createProject({userId, categoryId, title, description, goalAmount, image}))
         navigate('/home')
     }
 

@@ -6,6 +6,11 @@
     padding: 1vw;
 }
 
+.projectImage {
+    width: 100%;
+    
+}
+
 .projectDesc {
     display: -webkit-box;
     -webkit-box-orient: vertical;
