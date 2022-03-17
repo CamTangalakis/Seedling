@@ -121,7 +121,6 @@ export const createProject = (project) => async (dispatch) => {
 
 export const editProject = (project) => async (dispatch) => {
     const projectId = project.projectId
-    console.log(project, '<<<--- thunkthunk')
     const response = await csrfFetch(`/api/projects/${projectId}/`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
@@ -158,7 +157,6 @@ export const delProject = (id) => async (dispatch) => {
 
 
 export const postFunding = (fund) => async (dispatch) => {
-    console.log(fund, '<<<<thunk')
     const response = await csrfFetch('/api/fundings/', {
         method: 'POST',
         headers: {'Content-Type': 'Application/json'},
@@ -247,7 +245,6 @@ const reducer = (state = initialState, action) => {
             return newState
         case EDIT_PROJECT:
             newState = {...state}
-            console.log(newState, action.payload, '<<<---- reducer')
             const projectI = newState.projects.findIndex(project => project.projectId === action.payload.id)
             newState.projects[projectI] = action.payload
             newState.currentProject = action.payload

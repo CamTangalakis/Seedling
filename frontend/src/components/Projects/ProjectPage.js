@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getProject } from "../../store/project";
+import { delProject, getProject } from "../../store/project";
+import { Button } from '@material-ui/core'
 import CreateFundModal from "../Funding/CreateFundModal";
 import EditProjectModal from "../ProjectForms/EditProjectModal";
 import './projects.css'
+import ConfirmDeleteModal from "../ProjectForms/ConfirmDeleteModal";
 
 const ProjectPage = () => {
     const sessionUser = useSelector(state => state.session.user)
@@ -19,7 +21,9 @@ const ProjectPage = () => {
         totalFunded = fundings.reduce((accum, ele) => accum + ele)
     } else totalFunded = 0
 
-    console.log(totalFunded, '<<<---')
+    const deleteProject = () => {
+        dispatch(delProject({projectId}))
+    }
 
     useEffect(() => {
         dispatch(getProject(projectId))
@@ -47,6 +51,7 @@ const ProjectPage = () => {
 
                     <div>
                         <EditProjectModal project={project} />
+                        <ConfirmDeleteModal projectId={projectId} />
                     </div>
                 </div>
 
