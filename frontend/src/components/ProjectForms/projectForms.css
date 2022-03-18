@@ -32,3 +32,21 @@
 .createHeader {
     text-align: center;
 }
+
+
+/* ------------------------- edit project ------------------------- */
+
+.editContainer {
+    width: 40vw;
+    max-width: 300px;
+    display: flex;
+    padding: 5vw 5vw;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    background-color: beige;
+}
+
+.editHeader {
+    text-align: center;
+}

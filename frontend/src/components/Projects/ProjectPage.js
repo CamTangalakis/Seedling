@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { delProject, getProject } from "../../store/project";
-import { Button, Dialog } from '@material-ui/core'
+import { Button, Dialog, DialogContent } from '@material-ui/core'
 import CreateFundModal from "../Funding/CreateFundModal";
 import EditProjectModal from "../ProjectForms/EditProjectModal";
 import './projects.css'
@@ -40,7 +40,7 @@ const ProjectPage = () => {
     return (
         <div className='pageContainer'>
             <h1 className='pageTitle'>{project?.title}</h1>
-            <p className='pageUser'>By: {project?.User.username}</p>
+            <p className='pageUser'>By: {project?.User?.username}</p>
 
             <div className='pageInfo'>
                 <div className="pageImageContainer">
@@ -55,14 +55,14 @@ const ProjectPage = () => {
             <div className='pageBottom'>
                 <div className='fundingContainer'>
                     <p className='pageGoal' >Goal: ${project?.goalAmount}</p>
-                    <p className='pageRaised' >Raised: ${totalFunded}</p>
-                    <p className='pagePercent'>{(totalFunded / project?.goalAmount) * 100}% Funded</p>
+                    <p className='pageRaised' >Seeded: ${totalFunded}</p>
+                    <p className='pagePercent'>{((totalFunded / project?.goalAmount) * 100).toFixed(2)}% Funded</p>
                 </div>
 
-                <p>You have contributed ${userFundedTotal} to this project!</p>
 
                 {sessionUser &&
                     <div className='userActionsContainer'>
+                        <p>You have contributed ${userFundedTotal} to this project!</p>
                         <CreateFundModal projectId={projectId} />
 
                         {sessionUser.id == project.userId &&
@@ -70,10 +70,23 @@ const ProjectPage = () => {
                                 <EditProjectModal project={project} />
 
                                 <Button onClick={() => setDeleteDialog(true)}>Delete</Button>
-                                <Dialog open={deleteDialog} onClose={() => setDeleteDialog(false)}>
-                                    Are you sure you want to delete this project?
-                                    <Button onClick={deleteProject}>Yes!</Button>
-                                    <Button onClick={() => setDeleteDialog(false)}>Cancel</Button>
+                                <Dialog
+                                    open={deleteDialog}
+                                    onClose={() => setDeleteDialog(false)}
+                                    style={{"padding": "2vw"}}
+                                >
+                                    <DialogContent style={{"display": "flex", "flexDirection": "column", "alignItems": "center", "backgroundColor": "beige"}}>
+                                        <div style={{"fontSize": "20px", "marginBottom": "2vh"}}>Are you sure you want to delete this project?</div>
+
+                                        <div>
+                                            <Button onClick={deleteProject} style={{"margin": "2vh", "backgroundColor": "#880808", "color": "beige"}}>
+                                                Delete
+                                            </Button>
+                                            <Button onClick={() => setDeleteDialog(false)} style={{"margin": "2vh", "backgroundColor": "#578011", "color": "beige"}}>
+                                                Cancel
+                                            </Button>
+                                        </div>
+                                    </DialogContent>
                                 </Dialog>
                             </div>
                         }
