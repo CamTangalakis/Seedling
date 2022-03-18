@@ -1,9 +1,14 @@
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import Carousel from "../Carousel/Carousel";
 import LoginModal from "../Login/LoginModal"
 import SignUpModal from "../Signup/SignupModal"
 import './splash.css'
 
 const SplashPage = () => {
+    const projects = useSelector(state => state.project?.projects)
+    console.log(projects, '<<<<')
+
     return (
         <div className='splashContainer'>
             <div className='splashPartOne'>
@@ -30,8 +35,7 @@ const SplashPage = () => {
             </div>
 
             <div className='splashPartFour'>
-                Carousel
-                {/* cards mui */}
+                <Carousel components={projects} />
             </div>
 
             <div className='splashPartFive'>
