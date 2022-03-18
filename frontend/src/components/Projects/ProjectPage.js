@@ -1,18 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { delProject, getProject } from "../../store/project";
-import { Button } from '@material-ui/core'
+import { Button, Dialog } from '@material-ui/core'
 import CreateFundModal from "../Funding/CreateFundModal";
 import EditProjectModal from "../ProjectForms/EditProjectModal";
 import './projects.css'
-import ConfirmDeleteModal from "../ProjectForms/ConfirmDeleteModal";
 
 const ProjectPage = () => {
     const sessionUser = useSelector(state => state.session.user)
+    const navigate = useNavigate()
     const projectId = useParams().id
     const dispatch = useDispatch()
     const project = useSelector(state => state.project.currentProject)
+    const [ deleteDialog, setDeleteDialog ] = useState(false)
 
     let totalFunded
     let userFundedTotal = 0
@@ -27,6 +28,10 @@ const ProjectPage = () => {
         userFundedTotal = userFunds?.reduce((a,b) => a + b)
     } else totalFunded = 0
 
+    const deleteProject = () => {
+        dispatch(delProject(projectId))
+        navigate('/home')
+    }
 
     useEffect(() => {
         dispatch(getProject(projectId))
@@ -34,14 +39,15 @@ const ProjectPage = () => {
 
     return (
         <div className='pageContainer'>
+            <h1 className='pageTitle'>{project?.title}</h1>
+            <p className='pageUser'>By: {project?.User.username}</p>
+
             <div className='pageInfo'>
                 <div className="pageImageContainer">
                     <img className='pageImage' src={project?.image} />
                 </div>
 
                 <div className='pageInfoStuff'>
-                    <h1 className='pageTitle'>{project?.title}</h1>
-                    <p className='pageUser'>By: {project?.User.username}</p>
                     <p className='pageDescription'>{project?.description}</p>
                 </div>
             </div>
@@ -59,10 +65,18 @@ const ProjectPage = () => {
                     <div className='userActionsContainer'>
                         <CreateFundModal projectId={projectId} />
 
-                        <div>
-                            <EditProjectModal project={project} />
-                            <ConfirmDeleteModal projectId={projectId} />
-                        </div>
+                        {sessionUser.id == project.userId &&
+                            <div>
+                                <EditProjectModal project={project} />
+
+                                <Button onClick={() => setDeleteDialog(true)}>Delete</Button>
+                                <Dialog open={deleteDialog} onClose={() => setDeleteDialog(false)}>
+                                    Are you sure you want to delete this project?
+                                    <Button onClick={deleteProject}>Yes!</Button>
+                                    <Button onClick={() => setDeleteDialog(false)}>Cancel</Button>
+                                </Dialog>
+                            </div>
+                        }
                     </div>
                 }
             </div>

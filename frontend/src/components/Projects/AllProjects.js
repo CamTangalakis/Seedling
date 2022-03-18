@@ -19,6 +19,7 @@ const AllProjects = () => {
         <div>
             <CategoryBar />
 
+            <h2 className='categoryTitle'>All Projects</h2>
             <div className="projectsContainer">
                 {list}
             </div>

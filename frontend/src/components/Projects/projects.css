@@ -32,10 +32,12 @@
 .pageTitle {
     margin-bottom: 0px;
     text-align: center;
+    color: beige;
 }
 
 .pageUser {
     margin: 5px;
+    color: beige;
 }
 
 .pageDescription {
@@ -58,6 +60,7 @@
     justify-content: center;
     background-color: rgba(67, 102, 6, 0.25);
     padding: 1vw;
+    border-radius: 5px;
 }
 
 .pageImage {
