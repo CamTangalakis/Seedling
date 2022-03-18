@@ -1,12 +1,15 @@
 const express = require('express')
 const db = require('../../db/models')
 const asyncHandler = require('express-async-handler');
-const { Project, Funding } = require('../../db/models');
+const { Project, Funding, User } = require('../../db/models');
 const router = express.Router();
 
 
 router.get('/', asyncHandler(async(req, res) => {
-    let projects = await Project.findAll({include: Funding})
+    let projects = await Project.findAll({include: [
+        {model: Funding},
+        {model: User}
+    ]})
     res.json(projects)
 }))
 
@@ -14,7 +17,10 @@ router.get('/:id/', asyncHandler(async (req, res) => {
     const {id} = req.params
     let project = await Project.findOne({
         where: {id: id},
-        include: Funding,
+        include: [
+            {model: Funding},
+            {model: User}
+        ],
     })
     res.json(project)
 }))

@@ -8,7 +8,7 @@ const ProjectCard = ({project}) => {
 
 
     return (
-        <Card className='cardContainer' style={{"box-shadow": "1px 1px 1px 1px rgba(0,0,0,0.25), -1px -1px 1px 1px rgba(255, 255, 255, 0.25)"}}>
+        <Card className='cardContainer' style={{"boxShadow": "1px 1px 1px 1px rgba(0,0,0,0.25), -1px -1px 1px 1px rgba(255, 255, 255, 0.25)"}}>
             <a className='cardContent' href={`/project/${project?.id}`}>
                 <CardContent>
 
@@ -23,7 +23,7 @@ const ProjectCard = ({project}) => {
                     <div className='projectInfo'>
                         <h3 className='projectTitle'>{project?.title}</h3>
                         <p className='projectGoal'>Goal: <strong>${project?.goalAmount}</strong></p>
-                        <p className='projectCategory'>{categories[categoryId]}</p>
+                        <p className='projectCategory'> By: {project?.User.username}</p>
                     </div>
                 </CardContent>
             </a>

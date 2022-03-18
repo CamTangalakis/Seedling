@@ -20,7 +20,7 @@ function ConfirmDeleteModal({projectId}) {
       <Button className='confirmDeleteButton' onClick={() => setShowModal(true)}>Delete</Button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-            <p>Are you sure you want to delete this porject?</p>
+            <p>Are you sure you want to delete this project?</p>
             <Button onClick={() => setShowModal(false)}>Cancel</Button>
             <Button onClick={deleteProject}>Delete</Button>
         </Modal>

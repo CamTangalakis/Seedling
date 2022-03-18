@@ -25,17 +25,65 @@
     flex-direction: column;
     align-items: center;
     width: 40%;
+    margin: 1vw 2vw;
+    color: beige;
+}
+
+.pageTitle {
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+.pageUser {
+    margin: 5px;
 }
 
 .pageDescription {
-    border: solid 1px rgb(67, 102, 6);
+    background-color: rgb(67, 102, 6);
+    box-shadow:  1px 1px 1px 1px rgba(0,0,0,0.25), -1px -1px 1px 1px rgba(255, 255, 255, 0.25);
+    color: beige;
     padding: 10px;
     width: 100%;
     height: 100%;
-    margin: 3vw 2vw;
+    margin: 3vw 5vw;
+    text-align: center;
+    border-radius: 5px 0px 5px 0px;
+}
+
+.pageImageContainer {
+    width: 60%;
+    margin: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(67, 102, 6, 0.25);
+    padding: 1vw;
 }
 
 .pageImage {
-    width: 60%;
-    margin: 2vw;
+    width: 100%;
+}
+
+.userActionsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pageBottom {
+    width: 75%;
+    background-color: rgb(90, 36, 92);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: beige;
+}
+
+.fundingContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.pageRaised, .pageGoal, .pagePercent {
+    margin: 2vw 2vw;
 }

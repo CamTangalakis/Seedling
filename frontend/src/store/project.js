@@ -256,8 +256,12 @@ const reducer = (state = initialState, action) => {
             return newState
         case POST_FUND:
             newState = {...state}
-            newState.currentProject.Fundings.push([action.payload.funded, action.payload.userId, action.payload.id])
+            newState.currentProject.Fundings.push(action.payload.funding)
             newState.currentProject.Fundings = newState.currentProject.Fundings.slice()
+            const proId = newState.projects.findIndex(project => project.id === action.payload.funding.projectId)
+            console.log(proId, '<<<---')
+            // const project = newState.projects.find(proj => proj.id == action.payload.funding.projectId)
+            newState.projects[proId].Fundings.push(action.payload.funding)
             return newState
         case EDIT_FUND:
             newState = {...state}

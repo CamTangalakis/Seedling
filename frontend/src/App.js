@@ -11,6 +11,7 @@ import { getProjects, postFunding } from "./store/project";
 import { restoreUser } from "./store/session";
 import CategoryResults from "./components/CategoryResults/CategoryResults";
 import ProjectPage from "./components/Projects/ProjectPage";
+import './index.css'
 
 const theme = createTheme ({
   palette: {
@@ -33,7 +34,7 @@ function App() {
   }, [])
 
   return (
-    <div>
+    <div className='appBody'>
       <ThemeProvider theme={theme}>
         <NavBar />
         <BrowserRouter>

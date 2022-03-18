@@ -14,7 +14,7 @@ const EditProjectForm = ({project, setShowModal}) => {
     const [image, setImage] = useState(project?.image)
     const projectId = project?.id
 
-    console.log(projectId, categoryId, title, description, goalAmount, image)
+    // console.log(projectId, categoryId, title, description, goalAmount, image)
 
     const updateProject = () => {
         dispatch(editProject({projectId, categoryId, title, description, goalAmount, image}))
