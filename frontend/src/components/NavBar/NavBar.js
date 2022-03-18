@@ -42,7 +42,7 @@ const NavBar = () => {
             <AppBar style={{'backgroundColor': 'rgb(67, 102, 6)'}} >
                 <Toolbar className='NavContainer' >
                     <div className='NavName'>
-                        <Button href='/home' style={{"border-radius": "50%"}}>
+                        <Button href='/home' style={{"borderRadius": "50%"}}>
                             <img className='seedlingImg' src='https://user-images.githubusercontent.com/85664060/158716668-683a6c18-d912-4c1a-a176-fe44dba194fa.png'/>
                         </Button>
                     </div>
@@ -52,7 +52,7 @@ const NavBar = () => {
                         }
 
                         <IconButton >
-                            
+
                             <MenuIcon aria-controls="mainMenu"
                             aria-haspopup="true"
                             aria-expanded="false"

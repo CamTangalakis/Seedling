@@ -4,6 +4,7 @@ const cors = require('cors');
 const csurf = require('csurf');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser')
 
 const { environment } = require('./config');
 const isProduction = environment === 'production';
@@ -15,6 +16,7 @@ const routes = require('./routes');
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
+app.use(bodyParser.json())
 
 if (!isProduction) app.use(cors());
 
@@ -57,6 +59,9 @@ app.use((err, _req, res, _next) => {
       stack: isProduction ? null : err.stack,
     });
   });
+
+
+
 
 
 
