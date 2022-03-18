@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { delProject, getProject } from "../../store/project";
-import { Button, Dialog, DialogContent } from '@material-ui/core'
+import { Button, Dialog, DialogContent, LinearProgress } from '@material-ui/core'
 import CreateFundModal from "../Funding/CreateFundModal";
 import EditProjectModal from "../ProjectForms/EditProjectModal";
 import './projects.css'
@@ -28,6 +28,8 @@ const ProjectPage = () => {
         userFundedTotal = userFunds?.reduce((a,b) => a + b)
     } else totalFunded = 0
 
+    const percentFunded = ((totalFunded / project?.goalAmount) * 100).toFixed(2)
+
     const deleteProject = () => {
         dispatch(delProject(projectId))
         navigate('/home')
@@ -51,6 +53,12 @@ const ProjectPage = () => {
                     <p className='pageDescription'>{project?.description}</p>
                 </div>
             </div>
+
+            {/* <div className='progressBar'>
+                {percentFunded}% Funded
+                <LinearProgress value={percentFunded} />
+                <div className='progressFilled' style={{"backgroundColor": "black", "width": "25%"}}></div>
+            </div> */}
 
             <div className='pageBottom'>
                 <div className='fundingContainer'>

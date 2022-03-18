@@ -1,5 +1,6 @@
 /* TODO Add site wide styles */
 body{
+    height: 100%;
     background: linear-gradient(120deg, rgb(138, 175, 73), rgb(87, 128, 17), rgb(42, 65, 3)) ;
 }
 

@@ -6,10 +6,6 @@
     padding: 1vw;
 }
 
-.cardContainer:hover {
-
-}
-
 .cardContent {
     text-decoration: none;
     color: rgb(42, 11, 43);
@@ -17,7 +13,7 @@
 
 .projectInfo {
     margin: 0px -35px -50px -35px;
-    padding: 25px 20px;
+    padding: 0px 20px 25px 20px;
     background-color: beige;
     display: flex;
     flex-direction: column;
@@ -35,16 +31,17 @@
     text-align: center;
 }
 
-/* .progressBar{
-    width: 300px;
+.progressBar{
+    width: 100%;
     height: .5rem;
-    background-color: rgb(87, 128, 17);
-    margin-top: 0;
+    background-color: white;
+    margin: 0;
+    /* margin-left: -20px; */
 }
 
 .progressStatus{
     height: .5rem;
-    background-color: beige;
+    background-color: rgb(87, 128, 17);
     transition: all 2s;
     max-width: 100%;
-} */
+}
