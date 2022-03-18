@@ -6,6 +6,7 @@
 
 .categoryTitle {
     margin: auto;
+    margin-top: -5vw;
     width: fit-content;
     color: rgb(42, 11, 43);
     margin-bottom: 2vw;

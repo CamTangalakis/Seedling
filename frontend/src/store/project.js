@@ -121,7 +121,6 @@ export const createProject = (project) => async (dispatch) => {
 
 export const editProject = (project) => async (dispatch) => {
     const projectId = project.projectId
-    console.log(project, '<<<--- thunkthunk')
     const response = await csrfFetch(`/api/projects/${projectId}/`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
@@ -158,7 +157,6 @@ export const delProject = (id) => async (dispatch) => {
 
 
 export const postFunding = (fund) => async (dispatch) => {
-    console.log(fund, '<<<<thunk')
     const response = await csrfFetch('/api/fundings/', {
         method: 'POST',
         headers: {'Content-Type': 'Application/json'},
@@ -247,7 +245,6 @@ const reducer = (state = initialState, action) => {
             return newState
         case EDIT_PROJECT:
             newState = {...state}
-            console.log(newState, action.payload, '<<<---- reducer')
             const projectI = newState.projects.findIndex(project => project.projectId === action.payload.id)
             newState.projects[projectI] = action.payload
             newState.currentProject = action.payload
@@ -259,8 +256,12 @@ const reducer = (state = initialState, action) => {
             return newState
         case POST_FUND:
             newState = {...state}
-            newState.currentProject.Fundings.push([action.payload.funded, action.payload.userId, action.payload.id])
+            newState.currentProject.Fundings.push(action.payload.funding)
             newState.currentProject.Fundings = newState.currentProject.Fundings.slice()
+            const proId = newState.projects.findIndex(project => project.id === action.payload.funding.projectId)
+            console.log(proId, '<<<---')
+            // const project = newState.projects.find(proj => proj.id == action.payload.funding.projectId)
+            newState.projects[proId].Fundings.push(action.payload.funding)
             return newState
         case EDIT_FUND:
             newState = {...state}

@@ -1,6 +1,10 @@
 .barContainer {
     display: flex;
     margin: 100px 2vw 8vw 2vw;
+    background: linear-gradient(300deg, rgba(87, 128, 17, 0.75), rgba(59, 92, 4, 0.75), rgba(87, 128, 17, 0.75));
+    padding: 1vw 2vw 5.5vw 2vw;
+    border-radius: 15px;
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.25), -1px -1px 1px 1px rgba(255, 255, 255, 0.5);
 }
 
 .categoryContainer {
@@ -29,6 +33,6 @@
 
 .iconLabel {
     margin-top: 2vw;
-    color: rgb(42, 11, 43);
+    color: beige;
     text-decoration: none;
 }

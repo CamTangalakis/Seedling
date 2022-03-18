@@ -42,24 +42,22 @@ const NavBar = () => {
             <AppBar style={{'backgroundColor': 'rgb(67, 102, 6)'}} >
                 <Toolbar className='NavContainer' >
                     <div className='NavName'>
-                        <Button href='/home'>
+                        <Button href='/home' style={{"borderRadius": "50%"}}>
                             <img className='seedlingImg' src='https://user-images.githubusercontent.com/85664060/158716668-683a6c18-d912-4c1a-a176-fe44dba194fa.png'/>
                         </Button>
                     </div>
                     <div className='NavButtons'>
-                        <Button>
-                            Search
-                        </Button>
-
                         {user &&
-                            <Button href='/newProject'>New Project</Button>
+                            <Button href='/newProject' style={{"color": "beige"}} >New Project</Button>
                         }
 
                         <IconButton >
+
                             <MenuIcon aria-controls="mainMenu"
                             aria-haspopup="true"
                             aria-expanded="false"
                             onClick={() => {}}
+                            style={{"color": "beige"}}
                             />
                         </IconButton>
 

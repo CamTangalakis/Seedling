@@ -1,4 +1,11 @@
 /* TODO Add site wide styles */
 body{
-    background-color: beige;
+    height: 100%;
+    background: linear-gradient(120deg, rgb(138, 175, 73), rgb(87, 128, 17), rgb(42, 65, 3)) ;
 }
+
+/* .appBody {
+    background-image: url("https://user-images.githubusercontent.com/85664060/158951931-736df967-5308-4c17-b1b7-2a207b0a0879.png");
+    background-repeat: repeat;
+    background-size: 30vw;
+} */

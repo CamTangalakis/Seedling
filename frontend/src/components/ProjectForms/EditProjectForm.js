@@ -3,6 +3,7 @@ import { TextField, FormControl, Select, MenuItem, InputLabel, Button } from '@m
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom'
+import './projectForms.css'
 
 const EditProjectForm = ({project, setShowModal}) => {
     const dispatch = useDispatch()
@@ -14,7 +15,7 @@ const EditProjectForm = ({project, setShowModal}) => {
     const [image, setImage] = useState(project?.image)
     const projectId = project?.id
 
-    console.log(projectId, categoryId, title, description, goalAmount, image)
+    // console.log(projectId, categoryId, title, description, goalAmount, image)
 
     const updateProject = () => {
         dispatch(editProject({projectId, categoryId, title, description, goalAmount, image}))
@@ -22,9 +23,9 @@ const EditProjectForm = ({project, setShowModal}) => {
     }
 
     return (
-        <div>
-            <FormControl>
-                <h2>Edit Project</h2>
+        <div className="editContainer">
+            <FormControl fullWidth >
+                <h2 className='editHeader' >Edit Project</h2>
                 <TextField
                     type='text'
                     className='projectInput'
@@ -34,6 +35,7 @@ const EditProjectForm = ({project, setShowModal}) => {
                     required
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
+                    style={{"margin": "1vw", "color": "beige"}}
                 />
 
                 <TextField
@@ -44,7 +46,10 @@ const EditProjectForm = ({project, setShowModal}) => {
                     placeholder='what is your project about?'
                     required
                     value={description}
+                    multiline
+                    maxRows={5}
                     onChange={(e) => setDescription(e.target.value)}
+                    style={{"margin": "1vw"}}
                 />
 
                 <TextField
@@ -56,6 +61,7 @@ const EditProjectForm = ({project, setShowModal}) => {
                     required
                     value={goalAmount}
                     onChange={(e) => setGoalAmount(e.target.value)}
+                    style={{"margin": "1vw"}}
                 />
 
                 <TextField
@@ -66,16 +72,18 @@ const EditProjectForm = ({project, setShowModal}) => {
                     placeholder='enter image url'
                     requiredvalue={image}
                     onChange={(e) => setImage(e.target.value)}
+                    style={{"margin": "1vw"}}
                 />
 
-                <InputLabel id='category'>Category</InputLabel>
                 <Select
                     labelId='category'
                     name='categoryId'
                     label='Category'
                     required
                     value={categoryId}
-                    onChange={(e) => setCategoryId(e.target.value)} >
+                    onChange={(e) => setCategoryId(e.target.value)}
+                    style={{"padding": "15px 0px 5px 0px", "margin": "1vw"}}
+                >
 
                         <MenuItem value={0}>Select a Category</MenuItem>
                         <MenuItem value={1}>Tech and Gadgets</MenuItem>
@@ -88,7 +96,12 @@ const EditProjectForm = ({project, setShowModal}) => {
                         <MenuItem value={8}>Literature and Film</MenuItem>
                 </Select>
 
-                <Button type='submit ' onClick={updateProject}>Update Project</Button>
+                <Button
+                    type='submit'
+                    style={{"margin": "1vw"}}
+                    onClick={updateProject}>
+                        Update Project
+                </Button>
             </FormControl>
         </div>
     )

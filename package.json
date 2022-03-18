@@ -2,6 +2,7 @@
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
-    "@material/top-app-bar": "^13.0.0"
+    "@material/top-app-bar": "^13.0.0",
+    "body-parser": "^1.19.2"
   }
 }
