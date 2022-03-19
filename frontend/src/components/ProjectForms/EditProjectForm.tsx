@@ -1,7 +1,7 @@
 import { createProject, editProject } from "../../store/project";
 import { TextField, FormControl, Select, MenuItem, InputLabel, Button } from '@material-ui/core'
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom'
 import './projectForms.css'
 
@@ -34,7 +34,7 @@ const EditProjectForm = ({project, setShowModal}) => {
                     placeholder="what is your project called?"
                     required
                     value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    onChange={(e: any) => setTitle(e.target.value)}
                     style={{"margin": "1vw", "color": "beige"}}
                 />
 
@@ -48,7 +48,7 @@ const EditProjectForm = ({project, setShowModal}) => {
                     value={description}
                     multiline
                     maxRows={5}
-                    onChange={(e) => setDescription(e.target.value)}
+                    onChange={(e: any) => setDescription(e.target.value)}
                     style={{"margin": "1vw"}}
                 />
 
@@ -60,7 +60,7 @@ const EditProjectForm = ({project, setShowModal}) => {
                     placeholder='how much do you need?'
                     required
                     value={goalAmount}
-                    onChange={(e) => setGoalAmount(e.target.value)}
+                    onChange={(e: any) => setGoalAmount(e.target.value)}
                     style={{"margin": "1vw"}}
                 />
 
@@ -70,8 +70,9 @@ const EditProjectForm = ({project, setShowModal}) => {
                     name='image'
                     label='Cover Image'
                     placeholder='enter image url'
-                    requiredvalue={image}
-                    onChange={(e) => setImage(e.target.value)}
+                    required
+                    value={image}
+                    onChange={(e: any) => setImage(e.target.value)}
                     style={{"margin": "1vw"}}
                 />
 
@@ -81,7 +82,7 @@ const EditProjectForm = ({project, setShowModal}) => {
                     label='Category'
                     required
                     value={categoryId}
-                    onChange={(e) => setCategoryId(e.target.value)}
+                    onChange={(e: any) => setCategoryId(e.target.value)}
                     style={{"padding": "15px 0px 5px 0px", "margin": "1vw"}}
                 >
 

@@ -7,9 +7,14 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import './funding.css'
 import { csrfFetch } from '../../store/csrf'
 
+interface StateInt {
+    session?: any,
+    project?: any
+}
+
 const CreateFundForm = ({projectId, setShowModal}) => {
     const dispatch = useDispatch()
-    const userId = useSelector(state => state.session?.user?.id)
+    const userId = useSelector((state: StateInt) => state.session?.user?.id)
     const [funded, setFunded] = useState(0)
     const elements = useElements()
     const stripe = useStripe()
@@ -57,7 +62,7 @@ const CreateFundForm = ({projectId, setShowModal}) => {
                     label='Fund'
                     required
                     value={funded}
-                    onChange={(e) => setFunded(e.target.value)}
+                    onChange={(e: any) => setFunded(e.target.value)}
                 />
 
                 <CardElement />

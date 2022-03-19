@@ -5,8 +5,13 @@ import LoginModal from "../Login/LoginModal"
 import SignUpModal from "../Signup/SignupModal"
 import './splash.css'
 
+interface StateInt {
+    session?: any,
+    project?: any
+}
+
 const SplashPage = () => {
-    const projects = useSelector(state => state.project?.projects)
+    const projects = useSelector((state: StateInt) => state.project?.projects)
     console.log(projects, '<<<<')
 
     return (

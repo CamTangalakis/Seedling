@@ -5,10 +5,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom'
 import './projectForms.css'
 
+interface StateInt {
+    session?: any,
+    project?: any
+}
+
 const CreateProjectPage = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const userId = useSelector(state => state.session.user?.id)
+    const userId = useSelector((state: StateInt) => state.session?.user?.id)
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [goalAmount, setGoalAmount] = useState()
@@ -38,7 +43,7 @@ const CreateProjectPage = () => {
                         placeholder="what is your project called?"
                         required
                         value={title}
-                        onChange={(e) => setTitle(e.target.value)}
+                        onChange={(e: any) => setTitle(e.target.value)}
                     />
 
                     <TextField
@@ -49,7 +54,7 @@ const CreateProjectPage = () => {
                         placeholder='what is your project about?'
                         required
                         value={description}
-                        onChange={(e) => setDescription(e.target.value)}
+                        onChange={(e: any) => setDescription(e.target.value)}
                     />
 
                     <TextField
@@ -60,7 +65,7 @@ const CreateProjectPage = () => {
                         placeholder='how much do you need?'
                         required
                         value={goalAmount}
-                        onChange={(e) => setGoalAmount(e.target.value)}
+                        onChange={(e: any) => setGoalAmount(e.target.value)}
                     />
 
                     <TextField
@@ -69,8 +74,9 @@ const CreateProjectPage = () => {
                         name='image'
                         label='Cover Image'
                         placeholder='enter image url'
-                        requiredvalue={image}
-                        onChange={(e) => setImage(e.target.value)}
+                        required
+                        value={image}
+                        onChange={(e: any) => setImage(e.target.value)}
                     />
 
                     {/* <InputLabel id='category'>Category</InputLabel> */}
@@ -81,7 +87,7 @@ const CreateProjectPage = () => {
                         label='Category'
                         required
                         value={categoryId}
-                        onChange={(e) => setCategoryId(e.target.value)} >
+                        onChange={(e: any) => setCategoryId(e.target.value)} >
 
                             <MenuItem value={0}>Select a Category</MenuItem>
                             <MenuItem value={1}>Tech and Gadgets</MenuItem>
@@ -97,7 +103,7 @@ const CreateProjectPage = () => {
                     <Button
                         type='submit'
                         onClick={createNewProject}
-                        style={{"margin": "2vw", "font-weight": "600"}}
+                        style={{"margin": "2vw", "fontWeight": "600"}}
                     >
                         Post Your Seedling!
                     </Button>

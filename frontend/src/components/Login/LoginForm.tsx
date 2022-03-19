@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { login } from '../../store/session';
 import { TextField } from '@material-ui/core'
 import './login.css'
@@ -14,10 +14,10 @@ const LoginForm = () => {
         e.preventDefault()
 
         return dispatch(login({credential, password}))
-            .catch(async (res) => {
-                const data = await res.json()
-                if (data.errors) setErrors(data.errors)
-            })
+            // .catch(async (res) => {
+            //     const data = await res.json()
+            //     if (data.errors) setErrors(data.errors)
+            // })
     }
 
     return (

@@ -7,12 +7,17 @@ import CreateFundModal from "../Funding/CreateFundModal";
 import EditProjectModal from "../ProjectForms/EditProjectModal";
 import './projects.css'
 
+interface StateInt {
+    session?: any,
+    project?: any
+}
+
 const ProjectPage = () => {
-    const sessionUser = useSelector(state => state.session.user)
+    const sessionUser = useSelector((state: StateInt) => state.session?.user)
     const navigate = useNavigate()
     const projectId = useParams().id
     const dispatch = useDispatch()
-    const project = useSelector(state => state.project.currentProject)
+    const project = useSelector((state: StateInt) => state.project?.currentProject)
     const [ deleteDialog, setDeleteDialog ] = useState(false)
 
     let totalFunded

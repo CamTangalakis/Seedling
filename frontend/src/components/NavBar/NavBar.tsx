@@ -1,6 +1,6 @@
 import { AppBar, Toolbar, IconButton,
         Typography, Button, Menu, MenuList,
-        MenuItem, Stack } from '@material-ui/core'
+        MenuItem } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import './nav.css'
 import { useState } from 'react'
@@ -11,8 +11,13 @@ import LoginModal from '../Login/LoginModal'
 import { logout } from '../../store/session'
 import { NavLink } from 'react-router-dom'
 
+interface StateInt {
+    session?: any,
+    project?: any
+}
+
 const NavBar = () => {
-    const user = useSelector(state => state.session.user)
+    const user = useSelector((state: StateInt) => state.session?.user)
     const dispatch = useDispatch()
 
 

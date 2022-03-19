@@ -6,10 +6,15 @@ import LoginModal from '../Login/LoginModal'
 import SignUpModal from '../Signup/SignupModal'
 import { logout } from '../../store/session'
 
+interface StateInt {
+    session?: any,
+    project?: any
+}
+
 const MenuComponent = () => {
     const dispatch = useDispatch()
     const [openMenu, setOpenMenu] = useState(false)
-    const user = useSelector(state => state.session.user)
+    const user = useSelector((state: StateInt) => state.session?.user)
 
     const showMenu = () => {
         if(openMenu) return
@@ -55,12 +60,12 @@ const MenuComponent = () => {
             </IconButton>
             {openMenu && (
                 <Paper >
-                    <ClickAwayListener>
+                    {/* <ClickAwayListener>
                         <MenuList>
                             {sessionLinks}
 
                         </MenuList>
-                    </ClickAwayListener>
+                    </ClickAwayListener> */}
                 </Paper>
             )}
         </div>
