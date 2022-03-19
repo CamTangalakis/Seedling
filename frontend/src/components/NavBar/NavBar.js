@@ -1,6 +1,6 @@
 import { AppBar, Toolbar, IconButton,
         Typography, Button, Menu, MenuList,
-        MenuItem, Stack } from '@material-ui/core'
+        MenuItem } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import './nav.css'
 import { useState } from 'react'
