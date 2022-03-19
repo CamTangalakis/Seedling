@@ -1,0 +1,38 @@
+.barContainer {
+    display: flex;
+    margin: 100px 2vw 8vw 2vw;
+    background: linear-gradient(300deg, rgba(87, 128, 17, 0.75), rgba(59, 92, 4, 0.75), rgba(87, 128, 17, 0.75));
+    padding: 1vw 2vw 5.5vw 2vw;
+    border-radius: 15px;
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.25), -1px -1px 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+.categoryContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.categoryBit {
+    width: 4vw;
+    height: 4vw;
+    margin: 2vw;
+    margin-bottom: 0vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+}
+
+.categoryImg {
+    width: 5vw;
+    height: 5vw;
+    margin: -0.45vw;
+}
+
+.iconLabel {
+    margin-top: 2vw;
+    color: beige;
+    text-decoration: none;
+}

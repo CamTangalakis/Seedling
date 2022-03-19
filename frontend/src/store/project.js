@@ -1,3 +1,5 @@
+import { csrfFetch } from './csrf';
+
 const GET_ALL_PROJECTS = 'projects/GET_ALL'
 const GET_PROJECT = 'projects/GET'
 const CREATE_PROJECT = 'projects/POST'
@@ -73,7 +75,7 @@ const getSearch = (search) => {
 }
 
 export const getProjects = () => async (dispatch) => {
-    const response = await fetch('/api/projects/')
+    const response = await csrfFetch('/api/projects/')
     if(response.ok) {
         const data = await response.json()
         dispatch(getAllProjects(data))
@@ -87,7 +89,7 @@ export const getProjects = () => async (dispatch) => {
 }
 
 export const getProject = (id) => async (dispatch) => {
-    const response = await fetch(`/api/projects/${id}`)
+    const response = await csrfFetch(`/api/projects/${id}/`)
     if(response.ok) {
         const data = await response.json()
         dispatch(getOneProject(data))
@@ -101,9 +103,9 @@ export const getProject = (id) => async (dispatch) => {
 }
 
 export const createProject = (project) => async (dispatch) => {
-    const response = await fetch('/api/projects/', {
+    const response = await csrfFetch('/api/projects/', {
         method: 'POST',
-        bodu: project
+        body: JSON.stringify(project)
     })
     if(response.ok) {
         const data = await response.json()
@@ -117,8 +119,9 @@ export const createProject = (project) => async (dispatch) => {
 }
 
 
-export const editProject = (id, project) => async (dispatch) => {
-    const response = await fetch(`/api/projects/${id}`, {
+export const editProject = (project) => async (dispatch) => {
+    const projectId = project.projectId
+    const response = await csrfFetch(`/api/projects/${projectId}/`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(project)
@@ -137,7 +140,7 @@ export const editProject = (id, project) => async (dispatch) => {
 }
 
 export const delProject = (id) => async (dispatch) => {
-    const response = await fetch(`/api/projects/${id}`, {
+    const response = await csrfFetch(`/api/projects/${id}/`, {
         method: 'DELETE'
     })
     if(response.ok) {
@@ -154,7 +157,7 @@ export const delProject = (id) => async (dispatch) => {
 
 
 export const postFunding = (fund) => async (dispatch) => {
-    const response = await fetch('/api/fundings/', {
+    const response = await csrfFetch('/api/fundings/', {
         method: 'POST',
         headers: {'Content-Type': 'Application/json'},
         body: JSON.stringify(fund)
@@ -173,7 +176,7 @@ export const postFunding = (fund) => async (dispatch) => {
 }
 
 export const editFunding = (id, fund) => async (dispatch) => {
-    const response = await fetch(`/api/fundings/${id}`, {
+    const response = await csrfFetch(`/api/fundings/${id}`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(fund)
@@ -192,7 +195,7 @@ export const editFunding = (id, fund) => async (dispatch) => {
 }
 
 export const deleteFunding = (id) => async (dispatch) => {
-    const response = await fetch(`/api/fundings/${id}`, {
+    const response = await csrfFetch(`/api/fundings/${id}`, {
         method: 'DELETE'
     })
 
@@ -209,10 +212,16 @@ export const deleteFunding = (id) => async (dispatch) => {
 }
 
 export const searchProjects = (term) => async (dispatch) => {
-    const response = await fetch(`/api/projects/search/${term}`)
+    const response = await csrfFetch(`/api/projects/search/${term}`)
     if (response.ok) {
-        const projects = await response.json()
-        dispatch(getSearch(projects))
+        const data = await response.json()
+        dispatch(getSearch(data))
+        return data
+    }else if (response.status < 500) {
+        const data = await response.json()
+        if(data.errors) {
+            return data.errors
+        } else return ['An error occured. Please try again']
     }
 }
 
@@ -224,7 +233,7 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_ALL_PROJECTS:
             newState = {...state}
-            newState.projects = action.payload.projects
+            newState.projects = action.payload
             return newState
         case GET_PROJECT:
             newState = {...state}
@@ -232,11 +241,11 @@ const reducer = (state = initialState, action) => {
             return newState
         case CREATE_PROJECT:
             newState = {...state}
-            newState.projects.push(action.payload)
+            newState.projects.push(action.payload.project)
             return newState
         case EDIT_PROJECT:
             newState = {...state}
-            const projectI = newState.projects.findIndex(project => project.id === action.payload.id)
+            const projectI = newState.projects.findIndex(project => project.projectId === action.payload.id)
             newState.projects[projectI] = action.payload
             newState.currentProject = action.payload
             return newState
@@ -247,8 +256,12 @@ const reducer = (state = initialState, action) => {
             return newState
         case POST_FUND:
             newState = {...state}
-            newState.currentProject.funding.push([action.payload.funded, action.payload.userId, action.payload.id])
-            newState.currentProject.funding = newState.currentProject.funding.slice()
+            newState.currentProject.Fundings.push(action.payload.funding)
+            newState.currentProject.Fundings = newState.currentProject.Fundings.slice()
+            const proId = newState.projects.findIndex(project => project.id === action.payload.funding.projectId)
+            console.log(proId, '<<<---')
+            // const project = newState.projects.find(proj => proj.id == action.payload.funding.projectId)
+            newState.projects[proId].Fundings.push(action.payload.funding)
             return newState
         case EDIT_FUND:
             newState = {...state}

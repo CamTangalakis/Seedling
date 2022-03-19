@@ -4,39 +4,32 @@ const cors = require('cors');
 const csurf = require('csurf');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
-const routes = require('./routes');
-const { ValidationError } = require('sequelize');
+const bodyParser = require('body-parser')
 
 const { environment } = require('./config');
 const isProduction = environment === 'production';
+const { ValidationError } = require('sequelize');
 
 const app = express();
+const routes = require('./routes');
+
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
+app.use(bodyParser.json())
 
-if (!isProduction) {
-    app.use(cors());
-}
-app.use(helmet({
-    contentSecurityPolicy: false
-}));
+if (!isProduction) app.use(cors());
 
-app.use(
-    csurf({
-        cookie: {
-            secure: isProduction,
-            sameSite: isProduction && "Lax",
-            httpOnly: true,
-        },
+app.use(helmet({ contentSecurityPolicy: false }));
+
+app.use( csurf({
+      cookie: {
+        secure: isProduction,
+        sameSite: isProduction && "Lax",
+        httpOnly: true,
+      },
     })
-    );
-
-// app.use((req, res, next) => {
-//   let token = req.csrfToken()
-//   res.cookie('XSRF-TOKEN', token)
-//   res.locals.csrfToken = token
-// })
+  );
 
 app.use(routes);
 
@@ -49,7 +42,6 @@ app.use((_req, _res, next) => {
   });
 
 app.use((err, _req, _res, next) => {
-    // check if error is a Sequelize error:
     if (err instanceof ValidationError) {
       err.errors = err.errors.map((e) => e.message);
       err.title = 'Validation error';
@@ -59,7 +51,7 @@ app.use((err, _req, _res, next) => {
 
 app.use((err, _req, res, _next) => {
     res.status(err.status || 500);
-    // console.error(err);
+    console.error(err);
     res.json({
       title: err.title || 'Server Error',
       message: err.message,
@@ -68,9 +60,9 @@ app.use((err, _req, res, _next) => {
     });
   });
 
-// app.get('/csrf', (req, res, next) => {
-//   return res.json({_csrf: req.csrfToken()})
-// })
+
+
+
 
 
 module.exports = app;

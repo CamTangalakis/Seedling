@@ -16,85 +16,50 @@ const removeUser = () => {
   };
 };
 
-export const login = (credential, password) => async (dispatch) => {
-  const response = await csrfFetch('/api/session/login', {
+export const login = (user) => async (dispatch) => {
+  const { credential, password } = user;
+  const response = await csrfFetch('/api/session/', {
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({ credential, password }),
+    body: JSON.stringify({
+      credential,
+      password,
+    }),
   });
-
-  if(response.ok) {
-    const data = await response.json();
-    dispatch(setUser(data.user));
-    return response;
-  } else if (response.status < 500) {
-    const data = await response.json()
-    if(data.errors) {
-      return data.errors
-    } else {
-      return ['An error occured. Please try again.']
-    }
-  }
-};
-
-export const restoreUser = () => async (dispatch) => {
-  const response = await csrfFetch('/api/session');
   const data = await response.json();
   dispatch(setUser(data.user));
   return response;
 };
 
-// export const authenticate = () => async (dispatch) => {
-//   const response = await fetch('/api/auth/', {
-//     headers: {
-//       'Content-Type': 'application/json'
-//     }
-//   });
-//   if (response.ok) {
-//     const data = await response.json();
-//     if (data.errors) {
-//       return;
-//     }
-
-//     dispatch(setUser(data));
-//   }
-// }
-
-export const signup = (username, email, password, firstName, lastName) => async (dispatch) => {
-  // console.log(username, email, password, firstName, lastName)
-  const response = await csrfFetch("/api/users/signup/", {
-    method: "POST",
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      username, email, password, firstName, lastName
-    }),
-  });
-
-  if (response.ok) {
+export const restoreUser = () => async dispatch => {
+    const response = await csrfFetch('/api/session/');
     const data = await response.json();
-    dispatch(setUser(data))
-    return null;
-  } else if (response.status < 500) {
+    dispatch(setUser(data.user));
+    return response;
+};
+
+export const signup = (user) => async (dispatch) => {
+    const { username, email, password, profilePic } = user;
+    const response = await csrfFetch("/api/users/", {
+      method: "POST",
+      body: JSON.stringify({
+        username,
+        email,
+        password,
+        profilePic
+      }),
+    });
     const data = await response.json();
-    if (data.errors) {
-      return data.errors;
-    }
-  } else {
-    return ['An error occurred. Please try again.']
-  }
+    dispatch(setUser(data.user));
+    return response;
 };
 
 export const logout = () => async (dispatch) => {
-  const response = await csrfFetch('/api/session/', {
-      method: "DELETE",
-      headers: {'Content-Type': 'application/json'},
-  })
-
-  if(response.ok) {
-    dispatch(removeUser())
+    const response = await csrfFetch('/api/session/', {
+      method: 'DELETE',
+    });
+    dispatch(removeUser());
     return response;
-  }
-}
+};
 
 const initialState = { user: null };
 

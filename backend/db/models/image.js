@@ -1,8 +1,8 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Image = sequelize.define('Image', {
-    imageUrl: DataTypes.STRING,
-    projectId: DataTypes.INTEGER
+    projectId: DataTypes.INTEGER,
+    imageUrl: DataTypes.STRING
   }, {});
   Image.associate = function(models) {
     Image.belongsTo(models.Project, {foreignKey: 'projectId'})

@@ -1,0 +1,72 @@
+.signupContainer {
+    width: 300px;
+    height: fit-content;
+    /* min-height: 300px; */
+    background-color: rgba(67, 102, 6, 0.9);
+    border-radius: 15px 0px 15px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.signupForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5vh 1vh;
+}
+
+.signupHeader {
+    margin: 0px 0px 3vh 0px;
+    padding: 0px;
+    color: rgb(255, 255, 255);
+}
+
+.signupInput {
+    margin: 1vh;
+    border-radius: 5px 0px 5px 0px;
+    border: none;
+    border-bottom: solid 1px black;
+    padding: 1vh;
+}
+
+
+.signupButton {
+    margin: 10px 10vw 0vw 10vw;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: none;
+    color: beige;
+    background-color: rgb(90, 36, 92);
+    font-size: 20px;
+    width: 125px;
+}
+
+
+.signupButton:hover {
+    background-color: rgb(43, 97, 43);
+    color: beige;
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,.25);
+    cursor: pointer;
+}
+
+.signupModalButton {
+    margin: 1vw 5vw;
+    width: 15vw;
+    padding: 1vw 2vw;
+    border-radius: 5px;
+    border: none;
+    color: beige;
+    background-color: rgb(90, 36, 92);
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.25), -1px -1px 1px 1px rgba(255, 255, 255, 0.5);
+    font-size: 3vw;
+    cursor: pointer;
+}
+
+.signupModalButton:hover {
+    background-color: rgb(43, 97, 43);
+    color: beige;
+    box-shadow: 1px 1px 2px 2px rgba(0,0,0,.25), -1px -1px 2px 2px rgba(255, 255, 255, 0.5);
+}

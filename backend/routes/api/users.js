@@ -1,10 +1,10 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
+const { check } = require('express-validator');
+const { handleValidationErrors } = require('../../utils/validation');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
-const { check } = require('express-validator');
-const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
@@ -21,14 +21,6 @@ const validateSignup = [
       .not()
       .isEmail()
       .withMessage('Username cannot be an email.'),
-    check('firstName')
-      .exists({ checkFalsy: true })
-      .isLength({min: 2, max: 30})
-      .withMessage('First name must be between 2 and 30 characters'),
-    check('lastName')
-      .exists({ checkFalsy: true })
-      .isLength({min: 2, max: 30})
-      .withMessage('Last name must be between 2 and 30 characters'),
     check('password')
       .exists({ checkFalsy: true })
       .isLength({ min: 6 })
@@ -36,16 +28,16 @@ const validateSignup = [
     handleValidationErrors,
   ];
 
-
-//sign up
-router.post('/signup', validateSignup, asyncHandler(async (req, res) => {
-      const { email, password, username, firstName, lastName } = req.body;
-      const user = await User.signup({ email, username, password, firstName, lastName });
+ //sign up
+ router.post('/', validateSignup, asyncHandler(async (req, res) => {
+      const { email, password, username, profilePic } = req.body;
+      console.log(email, password, username, profilePic, '<<<<<-===')
+      const user = await User.signup({ username, email, password, profilePic });
 
       await setTokenCookie(res, user);
 
       return res.json({
-        user
+        user,
       });
     }),
   );
