@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
+import * as React from 'react';
 import SplashPage from "./components/Splash/Splash";
 import { ThemeProvider } from '@material-ui/core'
 import { createTheme } from '@material-ui/core/styles'
