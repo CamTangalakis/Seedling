@@ -10,3 +10,30 @@
     width: 50px;
     height: 50px;
 }
+
+.sessionLinksActions {
+    display: flex;
+    flex-direction: row;
+}
+
+.sessionLinksUser {
+    display: flex;
+    flex-direction: row;
+}
+
+.sessionLinksNoUser {
+    display: flex;
+    flex-direction: row;
+}
+
+.logoutButton {
+    background-color: rgb(90, 36, 92);
+    color: beige;
+    margin: 0vw 1vw;
+}
+
+.projectButton {
+    background-color: rgb(87, 128, 17);
+    margin: 0vw 1vw;
+
+}

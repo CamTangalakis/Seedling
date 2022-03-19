@@ -55,6 +55,7 @@ const ProjectPage = () => {
                 </div>
 
                 <div className='pageInfoStuff'>
+                    <p className='about'>About This Project</p>
                     <p className='pageDescription'>{project?.description}</p>
                 </div>
             </div>
@@ -78,11 +79,11 @@ const ProjectPage = () => {
                         <p>You have contributed ${userFundedTotal} to this project!</p>
                         <CreateFundModal projectId={projectId} />
 
-                        {sessionUser.id == project.userId &&
+                        {sessionUser?.id == project?.userId &&
                             <div>
                                 <EditProjectModal project={project} />
 
-                                <Button onClick={() => setDeleteDialog(true)}>Delete</Button>
+                                <Button className='deleteProjectButton'onClick={() => setDeleteDialog(true)} style={{"margin": "2vh", "backgroundColor": "#880808", "color": "beige"}}>Delete</Button>
                                 <Dialog
                                     open={deleteDialog}
                                     onClose={() => setDeleteDialog(false)}

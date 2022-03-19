@@ -15,6 +15,7 @@ import ProjectPage from "./components/Projects/ProjectPage";
 import { Elements } from '@stripe/react-stripe-js'
 import {loadStripe} from '@stripe/stripe-js'
 import './index.css'
+import Footer from "./components/Footer/Footer";
 
 const stripePromise = loadStripe('pk_test_51KeBquIXDN1OZLZBSTIFm1KqRdRhH1V8l6GV0AneKU4bER0KFOKhBVo8oCmQlkZyLYbnxf4sxw5AEDxig0whuLhX00f5VVh5mO')
 
@@ -52,6 +53,7 @@ function App() {
               <Route path='/project/:id' element={<ProjectPage />} />
             </Routes>
           </BrowserRouter>
+          <Footer />
         </Elements>
       </ThemeProvider>
     </div>

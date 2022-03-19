@@ -2,10 +2,9 @@ import { FormControl, TextField, Button } from '@material-ui/core'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { postFunding } from '../../store/project'
-import StripeCheckout from 'react-stripe-checkout'
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
-import './funding.css'
 import { csrfFetch } from '../../store/csrf'
+import './funding.css'
 
 interface StateInt {
     session?: any,
@@ -15,7 +14,7 @@ interface StateInt {
 const CreateFundForm = ({projectId, setShowModal}) => {
     const dispatch = useDispatch()
     const userId = useSelector((state: StateInt) => state.session?.user?.id)
-    const [funded, setFunded] = useState(0)
+    const [funded, setFunded] = useState()
     const elements = useElements()
     const stripe = useStripe()
 
@@ -65,9 +64,9 @@ const CreateFundForm = ({projectId, setShowModal}) => {
                     onChange={(e: any) => setFunded(e.target.value)}
                 />
 
-                <CardElement />
+                <CardElement className='cardElement' />
 
-                <Button onClick={makePayment}> Invest ${funded}! </Button>
+                <Button onClick={makePayment} type='submit' className='createFundButton' style={{"backgroundColor": "rgb(90, 36, 92)", "color": "beige", "margin": "2vw 7vw"}}> Invest ${funded ? funded : 0} </Button>
             </FormControl>
         </div>
     )

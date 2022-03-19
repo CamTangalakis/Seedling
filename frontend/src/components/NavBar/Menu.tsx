@@ -1,10 +1,12 @@
-import {IconButton, Menu, MenuList, Button, Paper, ClickAwayListener} from '@material-ui/core'
+import {IconButton, Menu, MenuItem, Button} from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import LoginModal from '../Login/LoginModal'
 import SignUpModal from '../Signup/SignupModal'
 import { logout } from '../../store/session'
+import * as React from 'react'
+// import { useNavigate } from 'react-router-dom'
 
 interface StateInt {
     session?: any,
@@ -13,27 +15,24 @@ interface StateInt {
 
 const MenuComponent = () => {
     const dispatch = useDispatch()
-    const [openMenu, setOpenMenu] = useState(false)
+    // const navigate = useNavigate()
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+    // const [openMenu, setOpenMenu] = useState(false)
+    const open = Boolean(anchorEl)
     const user = useSelector((state: StateInt) => state.session?.user)
 
-    const showMenu = () => {
-        if(openMenu) return
-        setOpenMenu(true)
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        setAnchorEl(e.currentTarget)
     }
 
-    useEffect(() => {
-        if (!openMenu) return
-        const closeMenu = () => {
-            setOpenMenu(false)
-        }
-
-        document.addEventListener('click', closeMenu)
-        return () => document.removeEventListener('click', closeMenu)
-    }, [openMenu])
+    const handleClose = () => {
+        setAnchorEl(null)
+    }
 
     const handleLogout = (e) => {
         e.preventDefault()
         dispatch(logout())
+        setAnchorEl(null)
     }
 
     let sessionLinks;
@@ -46,28 +45,39 @@ const MenuComponent = () => {
     }else {
         sessionLinks = (
             <div>
-                <LoginModal />
-                <SignUpModal />
+                <Button onClick={handleClose}>
+                    <LoginModal />
+                </Button>
+                <Button onClick={handleClose}>
+                    <SignUpModal />
+                </Button>
             </div>
         )
     }
 
     return (
         <div>
-
-            <IconButton onClick={showMenu}>
+            <Button
+                id='basic-button'
+                aria-controls={open ? 'basic-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+                onClick={handleClick}
+            >
                 <MenuIcon />
-            </IconButton>
-            {openMenu && (
-                <Paper >
-                    {/* <ClickAwayListener>
-                        <MenuList>
-                            {sessionLinks}
+            </Button>
 
-                        </MenuList>
-                    </ClickAwayListener> */}
-                </Paper>
-            )}
+            <Menu
+                id='basic-menu'
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{'aria-labelledby' : "basic-button"}}
+            >
+                {sessionLinks}
+
+
+            </Menu>
         </div>
     )
 }

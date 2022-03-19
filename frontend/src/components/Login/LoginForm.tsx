@@ -4,7 +4,7 @@ import { login } from '../../store/session';
 import { TextField } from '@material-ui/core'
 import './login.css'
 
-const LoginForm = () => {
+const LoginForm = ({setShowModal}) => {
     const [errors, setErrors] = useState([])
     const [credential, setCredential] = useState('')
     const [password, setPassword] = useState('')
@@ -13,11 +13,10 @@ const LoginForm = () => {
     const onLogin = async(e) => {
         e.preventDefault()
 
-        return dispatch(login({credential, password}))
-            // .catch(async (res) => {
-            //     const data = await res.json()
-            //     if (data.errors) setErrors(data.errors)
-            // })
+        const data = await dispatch(login({credential, password}))
+        if(data) {
+            setErrors([data])
+        }
     }
 
     return (
@@ -39,7 +38,7 @@ const LoginForm = () => {
                     label="Credentials"
                     value={credential}
                     required
-                    onChange={(e) => setCredential(e.target.value)}
+                    onChange={(e: any) => setCredential(e.target.value)}
                     style={{"margin": "1vw 0vw",
                     "border": "none"}}
                 />
@@ -52,7 +51,7 @@ const LoginForm = () => {
                     label='Password'
                     value={password}
                     required
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e: any) => setPassword(e.target.value)}
                     style={{"margin": "1vw 0vw",
                     "border": "none"}}
                 />

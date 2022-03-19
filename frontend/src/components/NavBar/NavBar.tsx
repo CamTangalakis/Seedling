@@ -2,7 +2,6 @@ import { AppBar, Toolbar, IconButton,
         Typography, Button, Menu, MenuList,
         MenuItem } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
-import './nav.css'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import MenuComponent from './Menu'
@@ -10,6 +9,7 @@ import SignUpModal from '../Signup/SignupModal'
 import LoginModal from '../Login/LoginModal'
 import { logout } from '../../store/session'
 import { NavLink } from 'react-router-dom'
+import './nav.css'
 
 interface StateInt {
     session?: any,
@@ -30,14 +30,14 @@ const NavBar = () => {
     if(user) {
         sessionLinks = (
             <div>
-                <Button onClick={handleLogout}> Log Out </Button>
+                <Button className='logoutButton' onClick={handleLogout}> Log Out </Button>
             </div>
         )
     }else {
         sessionLinks = (
-            <div>
-                <MenuItem><LoginModal /></MenuItem>
-                <MenuItem><SignUpModal /></MenuItem>
+            <div className='sessionLinksActions'>
+                <LoginModal />
+                <SignUpModal />
             </div>
         )
     }
@@ -52,26 +52,17 @@ const NavBar = () => {
                         </Button>
                     </div>
                     <div className='NavButtons'>
-                        {user &&
-                            <Button href='/newProject' style={{"color": "beige"}} >New Project</Button>
-                        }
-
-                        <IconButton >
-
-                            <MenuIcon aria-controls="mainMenu"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            onClick={() => {}}
-                            style={{"color": "beige"}}
-                            />
-                        </IconButton>
-
-
-                        {/* <Menu id='mainMenu' open='false' onClose={() => {}}>
-                            {sessionLinks}
-                            <MenuItem href='/'>Home</MenuItem>
-                        </Menu> */}
-
+                        {user ?
+                            (
+                                <div className='sessionLinksUser'>
+                                    <Button className='projectButton' href='/newProject' style={{"color": "beige"}} >New Project</Button>
+                                    {sessionLinks}
+                                </div>
+                            ):(
+                                <div className='sessionLinksNoUser'>
+                                    {sessionLinks}
+                                </div>
+                            )}
                     </div>
                 </Toolbar>
             </AppBar>
