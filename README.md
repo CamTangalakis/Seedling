@@ -21,7 +21,14 @@ Users can sign up as a new user, login with existing credentials, or login as a 
 Entrepreneurs can post a new project with a cover photo and details, and get seed funding from other users! They can edit all details of their projects and delete them. Seedling keeps track of all funding information.
 Visiting users can sort through projects by category, and fund projects that catch their eye.
 
+# Frontend Routes
 
+Splash page at '/'
+![SplashPage](https://user-images.githubusercontent.com/85664060/159148497-dce25ac8-f665-4343-8be6-01fcbcf14cbe.png)
+All projects displayed in the feed at '/home'
+Individual projects displayed at '/project/:id'
+Create a new project at '/newProject'
+User login and signup, creating funding, and project edit and delete are handled with modals
 
 # Database Schema
 
@@ -88,10 +95,3 @@ Create a funding at 'POST /api/fundings/'
 Integrated with Stripe API, create payment intent at ' POST /api/fundings/create-intent'
 Integrated with Stripe API, pay at 'POST /api/fundings/pay'
 
-# Frontend Routes
-
-Splash page at '/'
-All projects displayed in the feed at '/home'
-Individual projects displayed at '/project/:id'
-Create a new project at '/newProject'
-User login and signup, creating funding, and project edit and delete are handled with modals
