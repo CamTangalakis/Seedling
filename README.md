@@ -18,17 +18,37 @@ Happy coding!
 # User Summary 
 
 Users can sign up as a new user, login with existing credentials, or login as a Demo user. 
+
 Entrepreneurs can post a new project with a cover photo and details, and get seed funding from other users! They can edit all details of their projects and delete them. Seedling keeps track of all funding information.
+
 Visiting users can sort through projects by category, and fund projects that catch their eye.
 
 # Frontend Routes
 
 Splash page at '/'
 ![SplashPage](https://user-images.githubusercontent.com/85664060/159148497-dce25ac8-f665-4343-8be6-01fcbcf14cbe.png)
+![SplashPage](https://user-images.githubusercontent.com/85664060/159148495-bc8d7dba-77fc-4c81-9144-7781d13396b7.png)
+
 All projects displayed in the feed at '/home'
+![AllProjects](https://user-images.githubusercontent.com/85664060/159148327-74d77fbf-7108-47bc-a37a-597294d8c990.png)
+
+Projects can be filtered by category at '/category/:id'
+![ArtProjects](https://user-images.githubusercontent.com/85664060/159148330-05ddbb2c-b21a-4bf8-ad73-f9ed4e7ea12e.png)
+![LiteratureProjects](https://user-images.githubusercontent.com/85664060/159148332-28fbb979-a26c-4ae5-b6b1-1d4a61abdedf.png)
+
 Individual projects displayed at '/project/:id'
+![SingleProject](https://user-images.githubusercontent.com/85664060/159148320-1260fbca-54ea-4ef9-8871-8d528ed3c1a1.png)
+
 Create a new project at '/newProject'
+![CreateProject](https://user-images.githubusercontent.com/85664060/159148323-1ebeb11e-4b73-4556-91f8-64c9b877b077.png)
+
 User login and signup, creating funding, and project edit and delete are handled with modals
+![UserSignup](https://user-images.githubusercontent.com/85664060/159148336-c848ad1b-56b8-47eb-ae3e-7fccb5d70c6b.png)
+![CreateFunding](https://user-images.githubusercontent.com/85664060/159148322-273aa1e1-d7ba-49f9-b523-b17859da8fe2.png)
+![EditProject](https://user-images.githubusercontent.com/85664060/159148342-3903b3d6-86aa-4a61-9dd2-64289e5ec6b1.png)
+![DeleteProject](https://user-images.githubusercontent.com/85664060/159148345-858fc02a-3b4e-43d5-9987-cd790e10f0b4.png)
+
+
 
 # Database Schema
 
@@ -79,19 +99,28 @@ Fundings belong to one user and project
 
 ## Users
 Users can login at 'POST /api/session/'
+
 Users perpetuate their login at 'GET /api/session/'
+
 Users can logout at 'DELETE /api/session/'
+
 Users create new user information and sign up at 'POST /api/users/'
 
 ## Projects
 Get all project in the database at 'GET /api/projects/'
+
 Get a single project at 'GET /api/projects/:id'
+
 Create a project at 'POST /api/projects/'
+
 Edit a project at 'PUT /api/projects/:id'
+
 Delete a project at 'DELETE /api/projects/:id'
 
 ## Fundings
 Create a funding at 'POST /api/fundings/'
+
 Integrated with Stripe API, create payment intent at ' POST /api/fundings/create-intent'
+
 Integrated with Stripe API, pay at 'POST /api/fundings/pay'
 
