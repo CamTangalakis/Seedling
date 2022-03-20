@@ -3,7 +3,7 @@ import './carousel.css'
 
 const Carousel = ({components}) => {
     const [currentSlide, setCurrentSlide] = useState(0)
-    const slideLength = components.length
+    const slideLength = components?.length
 
     let slideInterval
     let intervalTime = 10000
