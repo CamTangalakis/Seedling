@@ -1,16 +1,28 @@
+.splashContainer {
+    margin: -20px -10px;
+}
+
 .splashPartOne {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     font-size: 2vw;
+    margin-top: 3vh;
+    height: 50vw;
 }
 
 .splashOneLeft {
     width: 30vw;
-    text-align: center;
+    /* text-align: center; */
     background-color: rgb(87, 128, 17);
     color: beige;
     padding: 10vw 10vw 25vw 10vw;
+}
+
+.splashOneTextLeft {
+    position: absolute;
+    width: 30vw;
+    left: 20px;
 }
 
 .splashOneRight {
@@ -21,12 +33,19 @@
     padding: 10vw 10vw 25vw 10vw;
 }
 
+.splashOneTextRight {
+    text-align: right;
+    position: absolute;
+    width: 30vw;
+    right: 20px;
+}
+
 .splashPartTwo {
     display: flex;
     position: absolute;
     width: 50vw;
     height: 50vw;
-    top: 35vh;
+    top: 100px;
     left: 25vw;
     border-radius: 50%;
     background-color: rgba(0,0,0,0.25);
@@ -52,10 +71,13 @@
     font-weight: 600;
 }
 
-
 .splashPartFour {
     background-color: rgb(90, 36, 92);
-    padding: 20vw;
+    padding: 10px;
+    height: 40vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .splashPartFive {
@@ -88,6 +110,7 @@
     flex-direction: column;
     width: 100%;
     padding: 5vw 0vw;
+    padding-top: 50px;
     background-color: beige;
 }
 
@@ -95,14 +118,16 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    padding: 0px 1vw;
 }
 
 .splashCategoriesHeader {
     font-size: 5vw;
-    padding: 5vw 21vw;
+    padding: 10vw 21vw 5vw;
+    text-align: center;
 }
 
-.categoryBit {
+.categoryBitSplash {
     width: 8vw;
     height: 8vw;
     padding: 1vw;
@@ -113,12 +138,19 @@
     box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.25), -1px -1px 1px 1px rgba(255, 255, 255, 0.5);
 }
 
-.categoryBit:hover {
+.categoryBitSplash:hover {
     background-color: rgb(255, 255, 255);
     box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.25), -1px -1px 2px 2px rgba(255, 255, 255, 0.5);
 }
 
-.categoryImg {
+.categoryImgSplash {
     width: 8vw;
     height: 8vw;
+}
+
+
+@media screen and (min-width: 1200px) {
+    .splashPartTwo {
+        margin-top: 100px;
+    }
 }

@@ -1,14 +1,8 @@
-import { AppBar, Toolbar, IconButton,
-        Typography, Button, Menu, MenuList,
-        MenuItem } from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu'
-import { useState } from 'react'
+import { AppBar, Toolbar, Button } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
-import MenuComponent from './Menu'
 import SignUpModal from '../Signup/SignupModal'
 import LoginModal from '../Login/LoginModal'
 import { logout } from '../../store/session'
-import { NavLink } from 'react-router-dom'
 import './nav.css'
 
 interface StateInt {
@@ -20,7 +14,6 @@ const NavBar = () => {
     const user = useSelector((state: StateInt) => state.session?.user)
     const dispatch = useDispatch()
 
-
     const handleLogout = (e) => {
         e.preventDefault()
         dispatch(logout())
@@ -30,7 +23,11 @@ const NavBar = () => {
     if(user) {
         sessionLinks = (
             <div>
-                <Button className='logoutButton' onClick={handleLogout}> Log Out </Button>
+                <Button className='logoutButton' onClick={handleLogout}
+                    style={{"backgroundColor": "rgb(90, 36, 92)", "color": "beige",
+                    "boxShadow": "1px 1px 1px 1px rgba(0,0,0,0.25), -1px -1px 1px 1px rgba(255, 255, 255, 0.5)"}}>
+                    Log Out
+                </Button>
             </div>
         )
     }else {
@@ -55,7 +52,13 @@ const NavBar = () => {
                         {user ?
                             (
                                 <div className='sessionLinksUser'>
-                                    <Button className='projectButton' href='/newProject' style={{"color": "beige"}} >New Project</Button>
+                                    <Button className='projectButton'
+                                        href='/newProject'
+                                        style={{"backgroundColor": "rgb(87, 128, 17)", "color": "beige",
+                                        "boxShadow": "1px 1px 1px 1px rgba(0,0,0,0.25), -1px -1px 1px 1px rgba(255, 255, 255, 0.5)",
+                                        "margin":"0vw 1vw"}} >
+                                        New Project
+                                    </Button>
                                     {sessionLinks}
                                 </div>
                             ):(

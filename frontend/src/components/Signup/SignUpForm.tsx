@@ -73,7 +73,7 @@ const SignupForm = () => {
                     "border": "none"}}
                 />
 
-                <TextField
+                {/* <TextField
                     className='signupInput'
                     name='profilePic'
                     type='text'
@@ -84,7 +84,7 @@ const SignupForm = () => {
                     onChange={updateProfilePic}
                     style={{"margin": "1vw 0vw",
                     "border": "none"}}
-                />
+                /> */}
 
                 <TextField
                     className='signupInput'

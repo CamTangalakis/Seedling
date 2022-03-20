@@ -14,7 +14,7 @@ interface StateInt {
 const CreateFundForm = ({projectId, setShowModal}) => {
     const dispatch = useDispatch()
     const userId = useSelector((state: StateInt) => state.session?.user?.id)
-    const [funded, setFunded] = useState()
+    const [funded, setFunded] = useState<number>()
     const elements = useElements()
     const stripe = useStripe()
 
@@ -61,6 +61,7 @@ const CreateFundForm = ({projectId, setShowModal}) => {
                     label='Fund'
                     required
                     value={funded}
+                    InputProps={{inputProps: {min: 0}}}
                     onChange={(e: any) => setFunded(e.target.value)}
                 />
 

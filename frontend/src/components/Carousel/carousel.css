@@ -2,11 +2,12 @@
     width: 100%;
     height: 90%;
     overflow: hidden;
+    /* margin: 0px 10px; */
 }
 
 .slide {
-    transform: translateX(-50%);
-    transition: all .5s ease;
+    transform: translateX(50%);
+    transition: all 1s ease;
     opacity: 0;
 }
 
@@ -24,23 +25,24 @@
     margin: auto;
 }
 
-
 .componentImage {
-    width: 100%;
+    width: 150%;
     z-index: 1;
     position: absolute;
 }
 
-
 .componentInfo {
     z-index: 2;
     width: 80%;
+    height: 30vw;
     background-color: rgba(0, 0, 0, 0.75);
     color: beige;
     padding: 2vw;
     animation: slideUp 1s ease .5s;
     animation-fill-mode: forwards;
     visibility: hidden;
+    margin: 10px;
+
 }
 
 @keyframes slideUp {
@@ -48,7 +50,10 @@
         visibility: visible;
         opacity: 0;
     }
-
+    10% {
+        visibility: visible;
+        opacity: 0;
+    }
     100% {
         visibility: visible;
         opacity: 1;
@@ -56,16 +61,17 @@
 }
 
 .componentTitle {
-    font-size: 30px;
+    font-size: 4vw;
     text-align: center;
 }
 
 .componentDescription {
     height: 100px;
+    font-size: 2vw;
     overflow: hidden;
 }
 
-.arrow {
+/* .arrow {
     border-radius: 50%;
     background: transparent;
     color: white;
@@ -74,7 +80,7 @@
     cursor: pointer;
     position: absolute;
     z-index: 10;
-}
+} */
 
 
 @media screen and (max-width: 600px) {

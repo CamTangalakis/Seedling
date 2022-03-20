@@ -52,6 +52,8 @@ const CreateProjectPage = () => {
                         name='description'
                         label='Description'
                         placeholder='what is your project about?'
+                        multiline
+                        maxRows={5}
                         required
                         value={description}
                         onChange={(e: any) => setDescription(e.target.value)}

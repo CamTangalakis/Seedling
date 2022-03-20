@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../../store/session';
-import { TextField } from '@material-ui/core'
+import { TextField, Button } from '@material-ui/core'
 import './login.css'
 
 const LoginForm = ({setShowModal}) => {
@@ -15,8 +15,14 @@ const LoginForm = ({setShowModal}) => {
 
         const data = await dispatch(login({credential, password}))
         if(data) {
-            setErrors([data])
+            // setErrors([data])
+            setErrors([data, 'Invalid credentials'])
+            console.log(errors)
         }
+    }
+
+    const demoLogin = () => {
+        dispatch(login({credential: 'Demo User', password: 'password'}))
     }
 
     return (
@@ -57,6 +63,7 @@ const LoginForm = ({setShowModal}) => {
                 />
 
                 <button type='submit' className='loginButton'>Let's Go!</button>
+                <button className='demoLoginButton' onClick={demoLogin} >Login as Demo User</button>
             </form>
         </div>
     )

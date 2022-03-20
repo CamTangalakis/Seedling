@@ -1,15 +1,30 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './carousel.css'
 
 const Carousel = ({components}) => {
     const [currentSlide, setCurrentSlide] = useState(0)
+    const slideLength = components.length
+
+    let slideInterval
+    let intervalTime = 5000
+
+    const autoScroll = () => {
+        slideInterval = setInterval(() => {
+            setCurrentSlide(currentSlide === slideLength - 1 ? 0 : currentSlide + 1)
+            // console.log(currentSlide, '<<<---')
+        }, intervalTime)
+    }
+
+    useEffect(() => {
+        setCurrentSlide(0)
+    }, [])
+
+    useEffect(() => {
+        autoScroll()
+    }, [currentSlide])
 
     return (
         <div className='carouselContainer'>
-            <i className="far fa-arrow-circle-left arrow prev"></i>
-
-            <i className="far fa-arrow-circle-right arrow next"></i>
-
             {components.map((comp, i) => {
                 return (
                     <div className={i === currentSlide ? "slide current": "slide"} key={i}>
