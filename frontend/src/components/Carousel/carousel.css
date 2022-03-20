@@ -5,8 +5,8 @@
 }
 
 .slide {
-    transform: translateX(-50%);
-    transition: all .5s ease;
+    transform: translateX(50%);
+    transition: all 1s ease;
     opacity: 0;
 }
 
@@ -26,7 +26,7 @@
 
 
 .componentImage {
-    width: 100%;
+    width: 150%;
     z-index: 1;
     position: absolute;
 }
@@ -48,7 +48,10 @@
         visibility: visible;
         opacity: 0;
     }
-
+    10% {
+        visibility: visible;
+        opacity: 0;
+    }
     100% {
         visibility: visible;
         opacity: 1;
@@ -56,24 +59,13 @@
 }
 
 .componentTitle {
-    font-size: 30px;
+    font-size: 4vw;
     text-align: center;
 }
 
 .componentDescription {
     height: 100px;
     overflow: hidden;
-}
-
-.arrow {
-    border-radius: 50%;
-    background: transparent;
-    color: white;
-    width: 20rem;
-    height: 20rem;
-    cursor: pointer;
-    position: absolute;
-    z-index: 10;
 }
 
 

@@ -44,11 +44,11 @@ function App() {
           <NavBar />
           <BrowserRouter>
             <Routes>
-              <Route path='/'  exact={true} element={<SplashPage />} />
-              <Route path='/home' exact={true} element={<AllProjects />} />
-              <Route path='/newProject' exact={true} element={<CreateProjectPage />} />
-              <Route path='/category/:id' exact={true} element={<CategoryResults />} />
-              <Route path='/project/:id' exact={true} element={<ProjectPage />} />
+              <Route path='/'  element={<SplashPage />} />
+              <Route path='/home' element={<AllProjects />} />
+              <Route path='/newProject' element={<CreateProjectPage />} />
+              <Route path='/category/:id' element={<CategoryResults />} />
+              <Route path='/project/:id' element={<ProjectPage />} />
             </Routes>
           </BrowserRouter>
         </Elements>
