@@ -1,7 +1,7 @@
 # Seedling
 Welcome to Seedling, a Kickstarter clone for Twitch Apprenticeship application! Seedling is the place for entrepreneurs to gain visibility and funding for their future projects. 
 
-This project is built with React, Express, and TypeScript. It leverages a MVC architectural pattern (model: react models with clear and simple api routes, view: express frontend with mui components to ease user interaction, controller: a custom reducer to communicate between the user interface and backend models). Stripe API is fully integrated to send money between donating users and the project owners (me). 
+This project is built with React, Express, and TypeScript. It leverages a MVC architectural pattern (model: express models with clear and simple api routes, view: react frontend with mui components to ease user interaction, controller: a custom reducer to communicate between the user interface and backend models). Stripe API is fully integrated to send money between donating users and the project owners (me). 
 
 # To Run Locally
 
@@ -25,7 +25,7 @@ Visiting users can sort through projects by category, and fund projects that cat
 
 # Frontend Routes
 
-Splash page at '/'
+Splash page at '/' includes a reusable carousel component that displays all projects
 ![SplashPage](https://user-images.githubusercontent.com/85664060/159148497-dce25ac8-f665-4343-8be6-01fcbcf14cbe.png)
 ![SplashPage](https://user-images.githubusercontent.com/85664060/159148495-bc8d7dba-77fc-4c81-9144-7781d13396b7.png)
 
