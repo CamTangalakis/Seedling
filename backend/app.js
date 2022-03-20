@@ -18,7 +18,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(bodyParser.json())
 
-if (!isProduction) app.use(cors());
+// if (!isProduction) app.use(cors());
 
 app.use(helmet({ contentSecurityPolicy: false }));
 
