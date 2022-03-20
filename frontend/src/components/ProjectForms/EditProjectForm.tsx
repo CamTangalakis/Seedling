@@ -99,8 +99,9 @@ const EditProjectForm = ({project, setShowModal}) => {
 
                 <Button
                     type='submit'
-                    style={{"margin": "1vw"}}
-                    onClick={updateProject}>
+                    style={{"margin": "1vw", "backgroundColor": "rgb(67, 102, 6)", "color": "beige"}}
+                    onClick={updateProject}
+                    >
                         Update Project
                 </Button>
             </FormControl>
