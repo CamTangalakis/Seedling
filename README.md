@@ -98,27 +98,27 @@ Fundings belong to one user and project
 # REST API
 
 ## Users
-Users can login at 'POST /api/session/'
+Users can login at 'POST /api/session/', returns user
 
-Users perpetuate their login at 'GET /api/session/'
+Users perpetuate their login at 'GET /api/session/', returns user 
 
-Users can logout at 'DELETE /api/session/'
+Users can logout at 'DELETE /api/session/', returns success message
 
-Users create new user information and sign up at 'POST /api/users/'
+Users create new user information and sign up at 'POST /api/users/', returns new user
 
 ## Projects
-Get all project in the database at 'GET /api/projects/'
+Get all project in the database at 'GET /api/projects/', returns all projects
 
-Get a single project at 'GET /api/projects/:id'
+Get a single project at 'GET /api/projects/:id', returns single project
 
-Create a project at 'POST /api/projects/'
+Create a project at 'POST /api/projects/', returns new project
 
-Edit a project at 'PUT /api/projects/:id'
+Edit a project at 'PUT /api/projects/:id', returns project
 
-Delete a project at 'DELETE /api/projects/:id'
+Delete a project at 'DELETE /api/projects/:id', returns success message
 
 ## Fundings
-Create a funding at 'POST /api/fundings/'
+Create a funding at 'POST /api/fundings/', returns new funding
 
 Integrated with Stripe API, create payment intent at ' POST /api/fundings/create-intent'
 
