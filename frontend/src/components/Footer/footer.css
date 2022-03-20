@@ -16,5 +16,10 @@
 .devIn, .devGit {
     margin: 0px 2px;
     color: beige;
+    width: 20px;
+    height: 20px;
+    text-align: center;
     padding: 5px;
+    background-color: green;
+    text-decoration: none;
 }
