@@ -6,12 +6,12 @@ const Carousel = ({components}) => {
     const slideLength = components.length
 
     let slideInterval
-    let intervalTime = 5000
+    let intervalTime = 10000
 
     const autoScroll = () => {
         slideInterval = setInterval(() => {
             setCurrentSlide(currentSlide === slideLength - 1 ? 0 : currentSlide + 1)
-            // console.log(currentSlide, '<<<---')
+            console.log(currentSlide, '<<<---')
         }, intervalTime)
     }
 
