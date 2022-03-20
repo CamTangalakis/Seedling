@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
+import * as React from 'react';
 import SplashPage from "./components/Splash/Splash";
 import { ThemeProvider } from '@material-ui/core'
 import { createTheme } from '@material-ui/core/styles'
@@ -14,6 +15,7 @@ import ProjectPage from "./components/Projects/ProjectPage";
 import { Elements } from '@stripe/react-stripe-js'
 import {loadStripe} from '@stripe/stripe-js'
 import './index.css'
+import Footer from "./components/Footer/Footer";
 
 const stripePromise = loadStripe('pk_test_51KeBquIXDN1OZLZBSTIFm1KqRdRhH1V8l6GV0AneKU4bER0KFOKhBVo8oCmQlkZyLYbnxf4sxw5AEDxig0whuLhX00f5VVh5mO')
 
@@ -44,13 +46,14 @@ function App() {
           <NavBar />
           <BrowserRouter>
             <Routes>
-              <Route path='/'  exact={true} element={<SplashPage />} />
-              <Route path='/home' exact={true} element={<AllProjects />} />
-              <Route path='/newProject' exact={true} element={<CreateProjectPage />} />
-              <Route path='/category/:id' exact={true} element={<CategoryResults />} />
-              <Route path='/project/:id' exact={true} element={<ProjectPage />} />
+              <Route path='/'  element={<SplashPage />} />
+              <Route path='/home' element={<AllProjects />} />
+              <Route path='/newProject' element={<CreateProjectPage />} />
+              <Route path='/category/:id' element={<CategoryResults />} />
+              <Route path='/project/:id' element={<ProjectPage />} />
             </Routes>
           </BrowserRouter>
+          <Footer />
         </Elements>
       </ThemeProvider>
     </div>

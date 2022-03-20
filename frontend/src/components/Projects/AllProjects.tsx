@@ -6,9 +6,14 @@ import CategoryBar from "../CategoryBar/CategoryBar";
 import ProjectCard from "./ProjectCard";
 import './projects.css'
 
+interface StateInt {
+    session?: any,
+    project?: any
+}
+
 const AllProjects = () => {
     const dispatch = useDispatch()
-    let projects = useSelector(state => state.project.projects)
+    let projects = useSelector((state: StateInt) => state.project?.projects)
 
     useEffect(() => {
         dispatch(getProjects())

@@ -4,6 +4,11 @@ import { signup } from '../../store/session';
 import './signup.css'
 import {TextField} from '@material-ui/core'
 
+interface StateInt {
+    session?: any,
+    project?: any
+}
+
 const SignupForm = () => {
     const [errors, setErrors] = useState([])
     const [username, setUsername] = useState('')
@@ -12,15 +17,15 @@ const SignupForm = () => {
     const [email, setEmail] = useState('')
     const [profilePic, setProfilePic] = useState('')
 
-    const user = useSelector(state => state.session.user)
+    const user = useSelector((state: StateInt) => state.session?.user)
     const dispatch = useDispatch()
 
     const onSignUp = async(e) => {
         e.preventDefault()
 
-        const data = await dispatch(signup({username, profilePic, email, password, profilePic}))
+        const data = await dispatch(signup({username, profilePic, email, password}))
         if(data) {
-             setErrors(data)
+             setErrors([data])
         }
     }
 
@@ -68,7 +73,7 @@ const SignupForm = () => {
                     "border": "none"}}
                 />
 
-                <TextField
+                {/* <TextField
                     className='signupInput'
                     name='profilePic'
                     type='text'
@@ -79,7 +84,7 @@ const SignupForm = () => {
                     onChange={updateProfilePic}
                     style={{"margin": "1vw 0vw",
                     "border": "none"}}
-                />
+                /> */}
 
                 <TextField
                     className='signupInput'

@@ -1,0 +1,20 @@
+.devInfo {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    background-color: rgb(90, 36, 92);
+    box-shadow: -1px -1px 3px 1px rgba(37, 3, 53, 0.25);
+    height: 30px;
+    margin: 20px -8px -20px -9px;
+}
+
+.devName {
+    color: beige;
+    padding: 5px;
+}
+
+.devIn, .devGit {
+    margin: 0px 2px;
+    color: beige;
+    padding: 5px;
+}

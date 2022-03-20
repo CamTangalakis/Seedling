@@ -7,12 +7,17 @@ import CreateFundModal from "../Funding/CreateFundModal";
 import EditProjectModal from "../ProjectForms/EditProjectModal";
 import './projects.css'
 
+interface StateInt {
+    session?: any,
+    project?: any
+}
+
 const ProjectPage = () => {
-    const sessionUser = useSelector(state => state.session.user)
+    const sessionUser = useSelector((state: StateInt) => state.session?.user)
     const navigate = useNavigate()
     const projectId = useParams().id
     const dispatch = useDispatch()
-    const project = useSelector(state => state.project.currentProject)
+    const project = useSelector((state: StateInt) => state.project?.currentProject)
     const [ deleteDialog, setDeleteDialog ] = useState(false)
 
     let totalFunded
@@ -50,6 +55,7 @@ const ProjectPage = () => {
                 </div>
 
                 <div className='pageInfoStuff'>
+                    <p className='about'>About This Project</p>
                     <p className='pageDescription'>{project?.description}</p>
                 </div>
             </div>
@@ -73,11 +79,11 @@ const ProjectPage = () => {
                         <p>You have contributed ${userFundedTotal} to this project!</p>
                         <CreateFundModal projectId={projectId} />
 
-                        {sessionUser.id == project.userId &&
+                        {sessionUser?.id == project?.userId &&
                             <div>
                                 <EditProjectModal project={project} />
 
-                                <Button onClick={() => setDeleteDialog(true)}>Delete</Button>
+                                <Button className='deleteProjectButton'onClick={() => setDeleteDialog(true)} style={{"margin": "2vh", "backgroundColor": "#880808", "color": "beige"}}>Delete</Button>
                                 <Dialog
                                     open={deleteDialog}
                                     onClose={() => setDeleteDialog(false)}
